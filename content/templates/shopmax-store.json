@@ -1,0 +1,16 @@
+{
+  "id": 2,
+  "name": "ShopMax Store",
+  "category": "Toko Online",
+  "price": 399000,
+  "oldPrice": 699000,
+  "buyers": 94,
+  "pages": 10,
+  "tags": ["Next.js", "Keranjang", "Dashboard"],
+  "preview": "from-emerald-900 via-teal-800 to-cyan-900",
+  "accentColor": "bg-emerald-500",
+  "badge": "Baru",
+  "features": ["10 Halaman", "Keranjang Belanja", "Filter Produk", "Halaman Checkout", "Admin Dashboard", "Free Revisi 1x"],
+  "waText": "Halo%20saya%20ingin%20beli%20template%20ShopMax%20Store",
+  "order": 2
+}

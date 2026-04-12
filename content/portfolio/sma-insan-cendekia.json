@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "title": "SMA Insan Cendekia",
+  "category": "company",
+  "categoryLabel": "Company Profile",
+  "image": "/Portfolio/SMA insan cendikia.png",
+  "link": "https://sekolahweb.vercel.app",
+  "description": "Website profil sekolah modern dengan fitur galeri kegiatan, portal PPDB online, jadwal akademik, dan kabar terkini sekolah.",
+  "tags": ["Next.js", "Tailwind", "Framer Motion"],
+  "color": "from-blue-600 to-indigo-700",
+  "featured": true,
+  "order": 1
+}

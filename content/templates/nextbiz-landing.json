@@ -1,0 +1,16 @@
+{
+  "id": 9,
+  "name": "NextBiz Landing",
+  "category": "Next.js",
+  "price": 349000,
+  "oldPrice": 599000,
+  "buyers": 143,
+  "pages": 6,
+  "tags": ["Next.js 14", "TypeScript", "Tailwind"],
+  "preview": "from-slate-900 via-zinc-800 to-neutral-900",
+  "accentColor": "bg-slate-500",
+  "badge": "Baru",
+  "features": ["App Router Next.js 14", "TypeScript + Tailwind", "SEO & OG Tags", "Dark Mode Toggle", "Framer Motion Animasi", "Free Revisi 1x"],
+  "waText": "Halo%20saya%20ingin%20beli%20template%20NextBiz%20Landing",
+  "order": 9
+}

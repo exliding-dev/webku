@@ -1,0 +1,16 @@
+{
+  "id": 11,
+  "name": "LaraAdmin CMS",
+  "category": "Laravel",
+  "price": 499000,
+  "oldPrice": 899000,
+  "buyers": 96,
+  "pages": 15,
+  "tags": ["Laravel 11", "Livewire", "Tailwind"],
+  "preview": "from-red-900 via-rose-800 to-pink-900",
+  "accentColor": "bg-red-500",
+  "badge": "Full Stack",
+  "features": ["Laravel 11 + Livewire", "CMS Admin Panel", "CRUD Lengkap", "Auth Breeze/Jetstream", "MySQL + Eloquent ORM", "Free Revisi 1x"],
+  "waText": "Halo%20saya%20ingin%20beli%20template%20LaraAdmin%20CMS",
+  "order": 11
+}

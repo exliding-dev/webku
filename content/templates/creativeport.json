@@ -1,0 +1,16 @@
+{
+  "id": 3,
+  "name": "CreativePort",
+  "category": "Portfolio",
+  "price": 199000,
+  "oldPrice": 349000,
+  "buyers": 211,
+  "pages": 5,
+  "tags": ["React", "Animasi", "Minimal"],
+  "preview": "from-violet-900 via-purple-800 to-fuchsia-900",
+  "accentColor": "bg-violet-500",
+  "badge": "Populer",
+  "features": ["5 Halaman", "Animasi Framer Motion", "Gallery Grid", "Blog Section", "Contact Form", "Free Revisi 1x"],
+  "waText": "Halo%20saya%20ingin%20beli%20template%20CreativePort",
+  "order": 3
+}

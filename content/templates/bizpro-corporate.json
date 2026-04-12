@@ -1,0 +1,16 @@
+{
+  "id": 1,
+  "name": "BizPro Corporate",
+  "category": "Bisnis",
+  "price": 299000,
+  "oldPrice": 499000,
+  "buyers": 128,
+  "pages": 7,
+  "tags": ["Next.js", "SEO Ready", "Dark Mode"],
+  "preview": "from-slate-900 via-blue-900 to-slate-800",
+  "accentColor": "bg-blue-500",
+  "badge": "Terlaris",
+  "features": ["7 Halaman", "Animasi Smooth", "Mobile Perfect", "SEO Optimal", "Dark & Light Mode", "Free Revisi 1x"],
+  "waText": "Halo%20saya%20ingin%20beli%20template%20BizPro%20Corporate",
+  "order": 1
+}

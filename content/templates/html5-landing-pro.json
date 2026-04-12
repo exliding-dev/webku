@@ -1,0 +1,16 @@
+{
+  "id": 15,
+  "name": "HTML5 Landing Pro",
+  "category": "HTML5",
+  "price": 99000,
+  "oldPrice": 199000,
+  "buyers": 548,
+  "pages": 1,
+  "tags": ["HTML5", "CSS3", "Vanilla JS"],
+  "preview": "from-green-900 via-emerald-800 to-lime-900",
+  "accentColor": "bg-green-500",
+  "badge": "Murah",
+  "features": ["Pure HTML5 + CSS3", "Vanilla JS Animasi", "AOS Scroll Effect", "Tanpa Framework", "Hosting di Mana Saja", "Free Revisi 1x"],
+  "waText": "Halo%20saya%20ingin%20beli%20template%20HTML5%20Landing%20Pro",
+  "order": 15
+}

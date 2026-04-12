@@ -1,0 +1,25 @@
+{
+  "id": "scale",
+  "name": "Paket Scale",
+  "price": "Rp 499.000",
+  "period": "/bulan",
+  "tagline": "Untuk bisnis yang siap scale up",
+  "features": [
+    "10 Halaman + Fitur Custom",
+    "Desain Premium & Full Branding",
+    "Free Domain .com/.co.id 1 Tahun",
+    "Hosting SSD 6 GB Unlimited",
+    "Free SSL & Advanced Security",
+    "Backup Harian + Weekly Archive",
+    "Full SEO Setup & Monitoring",
+    "5 Artikel SEO / bulan",
+    "Google Analytics + Search Console",
+    "Integrasi WhatsApp & Sosmed",
+    "Dedicated Support 7 Hari",
+    "Unlimited Revisi"
+  ],
+  "cta": "Scale Bisnis Saya",
+  "popular": false,
+  "waText": "Halo%20saya%20tertarik%20Paket%20Scale%20Bulanan%20Rp499.000/bln",
+  "order": 3
+}

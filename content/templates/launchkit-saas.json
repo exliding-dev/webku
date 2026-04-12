@@ -1,0 +1,16 @@
+{
+  "id": 6,
+  "name": "LaunchKit SaaS",
+  "category": "SaaS",
+  "price": 499000,
+  "oldPrice": 899000,
+  "buyers": 52,
+  "pages": 8,
+  "tags": ["Next.js", "Dark Mode", "Pricing"],
+  "preview": "from-indigo-900 via-blue-800 to-violet-900",
+  "accentColor": "bg-indigo-500",
+  "badge": "Premium",
+  "features": ["8 Halaman", "Pricing Table", "Feature Showcase", "Testimonial Carousel", "Blog & Docs", "Free Revisi 1x"],
+  "waText": "Halo%20saya%20ingin%20beli%20template%20LaunchKit%20SaaS",
+  "order": 6
+}

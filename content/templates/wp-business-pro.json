@@ -1,0 +1,16 @@
+{
+  "id": 7,
+  "name": "WP Business Pro",
+  "category": "WordPress",
+  "price": 199000,
+  "oldPrice": 349000,
+  "buyers": 317,
+  "pages": 8,
+  "tags": ["WordPress", "Elementor", "WooCommerce"],
+  "preview": "from-sky-900 via-blue-800 to-cyan-800",
+  "accentColor": "bg-sky-500",
+  "badge": "Terlaris",
+  "features": ["8 Halaman Siap Pakai", "Drag & Drop Elementor", "WooCommerce Ready", "Blog Terintegrasi", "Contact Form 7", "Free Revisi 1x"],
+  "waText": "Halo%20saya%20ingin%20beli%20template%20WP%20Business%20Pro",
+  "order": 7
+}

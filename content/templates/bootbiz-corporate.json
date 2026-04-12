@@ -1,0 +1,16 @@
+{
+  "id": 13,
+  "name": "BootBiz Corporate",
+  "category": "Bootstrap",
+  "price": 149000,
+  "oldPrice": 299000,
+  "buyers": 402,
+  "pages": 7,
+  "tags": ["Bootstrap 5", "SCSS", "jQuery"],
+  "preview": "from-purple-900 via-violet-800 to-indigo-900",
+  "accentColor": "bg-purple-500",
+  "badge": "Hemat",
+  "features": ["Bootstrap 5 Terbaru", "SCSS Variables", "jQuery Animasi", "7 Halaman Lengkap", "Cross-browser Compatible", "Free Revisi 1x"],
+  "waText": "Halo%20saya%20ingin%20beli%20template%20BootBiz%20Corporate",
+  "order": 13
+}

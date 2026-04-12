@@ -1,0 +1,16 @@
+{
+  "id": 8,
+  "name": "ElementorShop",
+  "category": "WordPress",
+  "price": 249000,
+  "oldPrice": 449000,
+  "buyers": 189,
+  "pages": 10,
+  "tags": ["Elementor", "WooCommerce", "Filter"],
+  "preview": "from-teal-900 via-emerald-800 to-green-900",
+  "accentColor": "bg-teal-500",
+  "badge": "Populer",
+  "features": ["10 Halaman Toko", "Elementor Pro Widget", "Filter & Search Produk", "Cart & Checkout", "AJAX Loading", "Free Revisi 1x"],
+  "waText": "Halo%20saya%20ingin%20beli%20template%20ElementorShop",
+  "order": 8
+}

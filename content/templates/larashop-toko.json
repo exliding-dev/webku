@@ -1,0 +1,16 @@
+{
+  "id": 12,
+  "name": "LaraShop Toko",
+  "category": "Laravel",
+  "price": 599000,
+  "oldPrice": 999000,
+  "buyers": 54,
+  "pages": 12,
+  "tags": ["Laravel 11", "Midtrans", "Filament"],
+  "preview": "from-orange-900 via-amber-800 to-yellow-900",
+  "accentColor": "bg-orange-500",
+  "badge": "Best Value",
+  "features": ["Laravel 11 Full CRUD", "Payment Midtrans/Xendit", "Admin Panel Filament", "Multi Kategori Produk", "Order Management", "Free Revisi 1x"],
+  "waText": "Halo%20saya%20ingin%20beli%20template%20LaraShop%20Toko",
+  "order": 12
+}

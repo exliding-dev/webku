@@ -1,0 +1,16 @@
+{
+  "id": 5,
+  "name": "LoveStory Wedding",
+  "category": "Wedding",
+  "price": 249000,
+  "oldPrice": 449000,
+  "buyers": 163,
+  "pages": 4,
+  "tags": ["Next.js", "RSVP", "Countdown"],
+  "preview": "from-rose-900 via-pink-800 to-red-900",
+  "accentColor": "bg-rose-500",
+  "badge": "Romantis",
+  "features": ["4 Halaman", "Countdown Timer", "Form RSVP Online", "Gallery Foto", "Google Maps", "Free Revisi 1x"],
+  "waText": "Halo%20saya%20ingin%20beli%20template%20LoveStory%20Wedding",
+  "order": 5
+}

@@ -1,0 +1,16 @@
+{
+  "id": 4,
+  "name": "FoodieResto",
+  "category": "Restoran",
+  "price": 249000,
+  "oldPrice": 399000,
+  "buyers": 76,
+  "pages": 6,
+  "tags": ["Next.js", "Menu Online", "Reservasi"],
+  "preview": "from-orange-900 via-red-800 to-rose-900",
+  "accentColor": "bg-orange-500",
+  "badge": null,
+  "features": ["6 Halaman", "Menu Interaktif", "Sistem Reservasi", "Gallery Foto", "Map Lokasi", "Free Revisi 1x"],
+  "waText": "Halo%20saya%20ingin%20beli%20template%20FoodieResto",
+  "order": 4
+}

@@ -1,0 +1,24 @@
+{
+  "id": "growth",
+  "name": "Paket Growth",
+  "price": "Rp 299.000",
+  "period": "/bulan",
+  "tagline": "Paling populer untuk UMKM & bisnis lokal",
+  "features": [
+    "5 Halaman Fleksibel",
+    "Desain Premium & Custom",
+    "Free Domain .com 1 Tahun",
+    "Hosting SSD 3 GB",
+    "Free SSL & Keamanan",
+    "Backup Harian Otomatis",
+    "SEO On-Page Setup",
+    "3 Artikel SEO / bulan",
+    "Google Analytics Setup",
+    "Priority WhatsApp Support",
+    "3 Revisi / bulan"
+  ],
+  "cta": "Pilih Paket Ini",
+  "popular": true,
+  "waText": "Halo%20saya%20tertarik%20Paket%20Growth%20Bulanan%20Rp299.000/bln",
+  "order": 2
+}

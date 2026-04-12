@@ -1,0 +1,16 @@
+{
+  "id": 10,
+  "name": "NextEcom Store",
+  "category": "Next.js",
+  "price": 499000,
+  "oldPrice": 799000,
+  "buyers": 78,
+  "pages": 12,
+  "tags": ["Next.js 14", "Prisma", "Stripe"],
+  "preview": "from-violet-900 via-indigo-800 to-blue-900",
+  "accentColor": "bg-violet-500",
+  "badge": "Premium",
+  "features": ["Full Stack Next.js", "Database Prisma/MySQL", "Integrasi Midtrans", "Admin Dashboard", "Auth Login Register", "Free Revisi 1x"],
+  "waText": "Halo%20saya%20ingin%20beli%20template%20NextEcom%20Store",
+  "order": 10
+}

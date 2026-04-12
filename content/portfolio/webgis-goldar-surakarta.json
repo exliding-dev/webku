@@ -1,0 +1,13 @@
+{
+  "id": 3,
+  "title": "WebGIS Persebaran Golongan Darah",
+  "category": "custom",
+  "categoryLabel": "Custom App",
+  "image": "/Portfolio/webgissolo.png",
+  "link": "https://webgis-goldarah-surakarta.vercel.app/",
+  "description": "Aplikasi peta interaktif visualisasi sebaran golongan darah per kelurahan di Kota Surakarta, lengkap dengan statistik dan filter data.",
+  "tags": ["React", "Leaflet.js", "Express"],
+  "color": "from-red-600 to-rose-700",
+  "featured": true,
+  "order": 3
+}

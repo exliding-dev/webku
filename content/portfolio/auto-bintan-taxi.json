@@ -1,0 +1,13 @@
+{
+  "id": 2,
+  "title": "Auto Bintan Taxi",
+  "category": "company",
+  "categoryLabel": "Company Profile",
+  "image": "/Portfolio/autobintantaxi.jpg",
+  "link": "https://autobintantaxi.com",
+  "description": "Website rental & paket wisata transportasi di Bintan dengan fitur pencarian trip, booking via WhatsApp, dan galeri destinasi.",
+  "tags": ["React", "Tailwind", "Vercel"],
+  "color": "from-amber-500 to-orange-600",
+  "featured": true,
+  "order": 2
+}

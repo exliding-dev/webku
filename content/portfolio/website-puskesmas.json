@@ -1,0 +1,13 @@
+{
+  "id": 4,
+  "title": "Website Puskesmas",
+  "category": "company",
+  "categoryLabel": "Company Profile",
+  "image": "/Portfolio/webpuskesmas.jpg",
+  "link": "https://puskesmas.halocode.web.id/",
+  "description": "Website layanan kesehatan masyarakat dengan fitur pendaftaran online, informasi layanan, jadwal dokter, dan dark mode.",
+  "tags": ["Next.js", "Tailwind", "Prisma"],
+  "color": "from-cyan-600 to-sky-700",
+  "featured": true,
+  "order": 4
+}

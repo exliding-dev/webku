@@ -1,0 +1,16 @@
+{
+  "id": 14,
+  "name": "BootStore Shop",
+  "category": "Bootstrap",
+  "price": 199000,
+  "oldPrice": 349000,
+  "buyers": 231,
+  "pages": 9,
+  "tags": ["Bootstrap 5", "Vanilla JS", "CSS3"],
+  "preview": "from-cyan-900 via-sky-800 to-blue-900",
+  "accentColor": "bg-cyan-500",
+  "badge": "Populer",
+  "features": ["Bootstrap 5 Grid System", "Product Hover Effects", "Cart Interaktif JS", "Checkout Form", "Responsive Design", "Free Revisi 1x"],
+  "waText": "Halo%20saya%20ingin%20beli%20template%20BootStore%20Shop",
+  "order": 14
+}
