@@ -88,7 +88,7 @@ export default function PortfolioClient({ items }: { items: PortfolioItem[] }) {
             Hasil Kerja <span className="bg-brutal-accent px-2 text-brutal-border brutal-border inline-block rotate-1">Nyata</span>, Bukan Sekadar Klaim
           </h2>
 
-          <p className="text-lg font-bold text-foreground bg-white dark:bg-brutal-bg p-2 brutal-border inline-block -rotate-1 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg font-bold text-foreground bg-white dark:bg-brutal-bg p-2 brutal-border inline-block -rotate-1 max-w-2xl mx-auto">
             Kami telah membantu puluhan bisnis — dari UMKM lokal hingga perusahaan — tampil profesional di internet. Ini sebagian hasilnya.
           </p>
         </motion.div>
@@ -105,7 +105,7 @@ export default function PortfolioClient({ items }: { items: PortfolioItem[] }) {
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`inline-flex items-center gap-2 px-6 py-3 font-black tracking-widest uppercase transition-all duration-200 brutal-border ${
+              className={`inline-flex items-center gap-1.5 md:gap-2 px-3 py-2 md:px-6 md:py-3 font-black text-xs md:text-base tracking-wider md:tracking-widest uppercase transition-all duration-200 brutal-border ${
                 activeCategory === cat.id
                   ? "bg-primary text-primary-foreground brutal-shadow-sm -translate-y-1"
                   : "bg-white text-foreground hover:bg-brutal-accent hover:shadow-[4px_4px_0_0_#111] dark:hover:shadow-[4px_4px_0_0_#e0e0e0] hover:-translate-y-1"
@@ -146,7 +146,7 @@ export default function PortfolioClient({ items }: { items: PortfolioItem[] }) {
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
 
                   {/* Category badge */}
-                  <span className="absolute top-4 left-4 px-3 py-1 font-black text-xs uppercase tracking-widest bg-yellow-400 text-black brutal-border shadow-[2px_2px_0_#111]">
+                  <span className="absolute top-4 left-4 px-2 py-1 md:px-3 md:py-1 font-black text-[10px] md:text-xs uppercase tracking-wider bg-yellow-400 text-black brutal-border shadow-[2px_2px_0_#111]">
                     {item.categoryLabel}
                   </span>
 
@@ -185,7 +185,7 @@ export default function PortfolioClient({ items }: { items: PortfolioItem[] }) {
                     {item.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-1 text-xs font-bold bg-white dark:bg-brutal-bg text-foreground brutal-border uppercase tracking-widest shadow-[2px_2px_0_#111] dark:shadow-[2px_2px_0_#e0e0e0]"
+                        className="px-2 py-1 text-[10px] md:text-xs font-bold bg-white dark:bg-brutal-bg text-foreground brutal-border uppercase tracking-wider md:tracking-widest shadow-[2px_2px_0_#111] dark:shadow-[2px_2px_0_#e0e0e0]"
                       >
                         {tag}
                       </span>
@@ -239,7 +239,7 @@ export default function PortfolioClient({ items }: { items: PortfolioItem[] }) {
                 <span className="block text-4xl font-display font-black text-foreground mb-1">
                   {stat.value}
                 </span>
-                <span className="text-xs font-black uppercase tracking-widest text-foreground/80">
+                <span className="text-[10px] md:text-xs font-black uppercase tracking-wider md:tracking-widest text-foreground/80">
                   {stat.label}
                 </span>
               </div>

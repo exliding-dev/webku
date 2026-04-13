@@ -13,6 +13,7 @@ import {
   ArrowUpRight,
   Heart,
 } from "lucide-react";
+import { FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa6";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -36,26 +37,17 @@ const SOCIALS = [
   {
     label: "WhatsApp",
     href: `https://wa.me/${process.env.NEXT_PUBLIC_CONTACT_PHONE}`,
-    icon: <MessageCircle className="w-5 h-5" />,
-    color: "hover:text-green-400",
+    icon: <FaWhatsapp className="w-5 h-5 text-green-500" />,
   },
   {
     label: "Instagram",
     href: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://instagram.com/",
-    icon: <Instagram className="w-5 h-5" />,
-    color: "hover:text-pink-400",
-  },
-  {
-    label: "YouTube",
-    href: "https://youtube.com/",
-    icon: <Youtube className="w-5 h-5" />,
-    color: "hover:text-red-400",
+    icon: <FaInstagram className="w-5 h-5 text-pink-500" />,
   },
   {
     label: "TikTok",
     href: process.env.NEXT_PUBLIC_TIKTOK_URL || "https://tiktok.com/",
-    icon: <Youtube className="w-5 h-5" />, // Fallback icon, TikTok may not be in lucide-react by default
-    color: "hover:text-black dark:hover:text-white",
+    icon: <FaTiktok className="w-5 h-5" />,
   },
 ];
 

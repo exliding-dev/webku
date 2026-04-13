@@ -133,12 +133,12 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16 p-8 bg-white dark:bg-brutal-bg brutal-border brutal-shadow-sm -rotate-1"
+          className="text-center max-w-3xl mx-auto mb-10 md:mb-16 p-5 md:p-8 bg-white dark:bg-brutal-bg brutal-border brutal-shadow-sm -rotate-1"
         >
-          <h2 className="text-4xl md:text-5xl font-display font-black text-foreground uppercase tracking-tight drop-shadow-[2px_2px_0_var(--brutal-border)]">
+          <h2 className="text-3xl md:text-5xl font-display font-black text-foreground uppercase tracking-tight drop-shadow-[2px_2px_0_var(--brutal-border)]">
             Layanan & Pricing
           </h2>
-          <p className="mt-4 text-lg font-bold text-foreground bg-brutal-accent px-4 py-2 brutal-border inline-block rotate-1">
+          <p className="mt-4 text-base md:text-lg font-bold text-foreground bg-brutal-accent px-3 py-1.5 md:px-4 md:py-2 brutal-border inline-block rotate-1">
             Pilih paket pembuatan website yang sesuai dengan kebutuhan bisnis Anda.
           </p>
         </motion.div>
@@ -182,7 +182,7 @@ export default function Services() {
                     {plan.name}
                   </CardTitle>
                   <div className="mt-4 flex flex-col items-center justify-center">
-                    <span className="text-3xl font-black bg-white text-foreground px-4 py-2 brutal-border brutal-shadow-sm -rotate-2">
+                    <span className="text-2xl md:text-3xl font-black bg-white text-foreground px-3 py-2 md:px-4 md:py-2 brutal-border brutal-shadow-sm -rotate-2">
                       {plan.price}
                     </span>
                     <span className="text-sm font-bold uppercase tracking-wider mt-4 px-2 py-1 bg-foreground text-background brutal-border inline-block rotate-1">
@@ -209,7 +209,7 @@ export default function Services() {
                         <span className="h-6 w-6 brutal-border bg-primary text-primary-foreground flex items-center justify-center shrink-0 mr-3 shadow-[2px_2px_0_#111]">
                           <Check className="h-4 w-4" strokeWidth={4} />
                         </span>
-                        <span className="text-sm font-bold uppercase tracking-wide">
+                        <span className="text-[13px] md:text-sm font-medium">
                           {feature}
                         </span>
                       </motion.li>

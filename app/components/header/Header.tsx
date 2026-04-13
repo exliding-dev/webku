@@ -49,7 +49,6 @@ const simpleNavItems = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [layananOpen, setLayananOpen] = useState(false);
   const [mobileLayananOpen, setMobileLayananOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -63,10 +62,6 @@ export default function Header() {
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDarkMode);
-  }, [isDarkMode]);
 
   const navBase = "text-foreground hover:bg-brutal-accent hover:text-brutal-border brutal-border bg-transparent";
 
@@ -158,16 +153,6 @@ export default function Header() {
               </Link>
             ))}
 
-            <button
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className="ml-2 bg-brutal-bg p-2 transition-colors duration-200 brutal-border brutal-shadow-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-brutal-accent hover:text-brutal-border hover:shadow-none"
-            >
-              {isDarkMode ? (
-                <Sun className="h-5 w-5 text-foreground group-hover:text-brutal-border" />
-              ) : (
-                <Moon className="h-5 w-5 text-foreground group-hover:text-brutal-border" />
-              )}
-            </button>
 
             <Link href="/kontak" className="ml-4 brutal-btn">
               Konsultasi Gratis
@@ -176,12 +161,6 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <div className="flex items-center space-x-3 md:hidden">
-            <button
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className="bg-brutal-bg p-2 text-foreground brutal-border brutal-shadow-sm"
-            >
-              {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="bg-primary p-2.5 text-primary-foreground transition-all brutal-border brutal-shadow-[2px_2px_0_#111] hover:-shadow-none hover:translate-x-[2px] hover:translate-y-[2px]"
@@ -198,7 +177,7 @@ export default function Header() {
          transition={{ duration: 0.3 }}
          className="overflow-hidden border-t-4 border-brutal-border bg-brutal-bg md:hidden"
        >
-        <div className="space-y-2 px-4 py-6">
+        <div className="space-y-1.5 px-4 py-4">
           <Link href="/#home" onClick={() => setIsOpen(false)}
             className="flex items-center gap-3 px-4 py-3 text-sm font-bold uppercase tracking-wide text-foreground transition-all brutal-border hover:bg-brutal-accent hover:text-brutal-border">
             <Globe className="h-4 w-4" /> Beranda

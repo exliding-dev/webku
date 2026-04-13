@@ -162,12 +162,12 @@ export default function Hero() {
           variants={staggerContainer}
           initial="hidden"
           animate="show"
-          className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 pt-24 pb-16 text-center lg:px-10"
+          className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 pt-24 pb-32 md:pb-28 lg:pb-16 text-center lg:px-10"
         >
 
           {/* Badge */}
-          <motion.div variants={brutalDrop} whileHover={{ rotate: 2, scale: 1.05 }} className="mb-8 relative transition-transform cursor-pointer">
-            <span className="inline-flex items-center gap-2 bg-brutal-accent text-brutal-border brutal-border px-4 py-2 font-black tracking-widest uppercase brutal-shadow-[4px_4px_0_0_#111]">
+          <motion.div variants={brutalDrop} whileHover={{ rotate: 2, scale: 1.05 }} className="mb-6 md:mb-8 relative transition-transform cursor-pointer">
+            <span className="inline-flex items-center gap-2 bg-brutal-accent text-brutal-border brutal-border px-3 py-1.5 md:px-4 md:py-2 font-black text-xs md:text-sm tracking-wider md:tracking-widest uppercase brutal-shadow-[4px_4px_0_0_#111]">
               <span className="h-2 w-2 bg-brutal-border" />
               Jasa Pembuatan Website · Klaten
             </span>
@@ -178,7 +178,7 @@ export default function Hero() {
           {/* Headline */}
           <motion.h1
             variants={brutalDrop}
-            className="font-display mb-6 max-w-4xl text-[clamp(2.6rem,7vw,5.5rem)] font-black leading-[1] tracking-tighter text-foreground uppercase drop-shadow-[4px_4px_0_var(--brutal-border)] dark:drop-shadow-[4px_4px_0_#e0e0e0] group"
+            className="font-display mb-4 md:mb-6 max-w-4xl text-[clamp(2.1rem,8vw,5.5rem)] font-black leading-[1.1] md:leading-[1] tracking-tighter text-foreground uppercase drop-shadow-[4px_4px_0_var(--brutal-border)] dark:drop-shadow-[4px_4px_0_#e0e0e0] group"
           >
             Website yang{' '}
             <span className="bg-primary text-primary-foreground px-2 pb-2 inline-block -rotate-2 brutal-border">Menjual</span>
@@ -187,7 +187,7 @@ export default function Hero() {
           </motion.h1>
 
           {/* Sub-headline */}
-          <motion.p variants={brutalDrop} whileHover={{ rotate: 1, scale: 1.02 }} className="mb-10 max-w-xl text-lg md:text-xl font-bold leading-relaxed text-foreground p-4 bg-white dark:bg-brutal-bg brutal-border brutal-shadow-sm -rotate-1 cursor-default">
+          <motion.p variants={brutalDrop} whileHover={{ rotate: 1, scale: 1.02 }} className="mb-8 max-w-xl text-base md:text-xl font-bold leading-relaxed text-foreground p-3 md:p-4 bg-white dark:bg-brutal-bg brutal-border brutal-shadow-sm -rotate-1 cursor-default">
             Kami bangun website cepat, aman, dan SEO-friendly — sehingga bisnis Anda di{' '}
             <span className="text-primary underline decoration-4 underline-offset-4">Klaten &amp; sekitarnya</span>{' '}
             lebih mudah ditemukan dan dipercaya pelanggan.
@@ -215,7 +215,7 @@ export default function Hero() {
                   boxShadow: '0px 0px 0px 0px #111',
                 }}
                 whileTap={{ x: 8, y: 8, boxShadow: '0px 0px 0px 0px #111' }}
-                className="flex cursor-default items-center gap-2 px-4 py-2 font-black tracking-wide bg-brutal-bg text-foreground brutal-border brutal-shadow-sm uppercase text-sm object-cover"
+                className="flex cursor-default items-center gap-1.5 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 font-black tracking-normal md:tracking-wide bg-brutal-bg text-foreground brutal-border brutal-shadow-sm uppercase text-xs md:text-sm object-cover"
               >
                 <span className="text-primary">{icon}</span>
                 {label}
@@ -250,12 +250,12 @@ export default function Hero() {
                   variants={brutalScale}
                   whileHover={{ x: 4, y: 4, rotate: 0 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-                  className="bg-primary text-primary-foreground brutal-border brutal-shadow-sm px-8 py-6 text-center rotate-1 hover:shadow-none cursor-default"
+                  className="bg-primary text-primary-foreground brutal-border brutal-shadow-sm px-5 py-4 md:px-8 md:py-6 text-center rotate-1 hover:shadow-none cursor-default w-[46%] md:w-auto"
                 >
-                  <div className="font-display mb-1 text-4xl font-black">
+                  <div className="font-display mb-1 text-3xl md:text-4xl font-black">
                     <AnimatedCounter value={value} suffix={suffix} />
                   </div>
-                  <div className="text-xs font-black tracking-widest uppercase text-primary-foreground/80">
+                  <div className="text-[10px] md:text-xs font-black tracking-wider md:tracking-widest uppercase text-primary-foreground/80">
                     {label}
                   </div>
                 </motion.div>
@@ -264,11 +264,7 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Scroll down indicator */}
-        <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-2">
-          <span className="text-[0.65rem] tracking-[0.2em] font-black uppercase text-foreground bg-brutal-accent px-2 py-1 brutal-border">Scroll</span>
-          <div className="h-12 w-2 brutal-border bg-foreground" />
-        </div>
+
       </section>
     </>
   )
