@@ -11,6 +11,7 @@ export default function TemplateSayaPage() {
       status: "Aktif",
       url: "https://toko-baju.exliding.my.id",
       downloadUrl: "/downloads/toko-online-spesial.zip",
+      tutorialUrl: "https://www.youtube.com/watch?v=TUTORIAL_TOKO_ONLINE",
       fileSize: "12.4 MB",
       version: "v2.1.0",
       techStack: ["Next.js", "Tailwind CSS", "PostgreSQL"],
@@ -26,6 +27,7 @@ export default function TemplateSayaPage() {
       status: "Maintenance",
       url: "https://corps.exliding.my.id",
       downloadUrl: "/downloads/company-profile-premium.zip",
+      tutorialUrl: "https://www.youtube.com/watch?v=TUTORIAL_COMPANY_PROFILE",
       fileSize: "8.7 MB",
       version: "v1.3.2",
       techStack: ["React", "Bootstrap 5", "Node.js"],
@@ -41,6 +43,7 @@ export default function TemplateSayaPage() {
       status: "Berakhir",
       url: "https://wedding.exliding.my.id",
       downloadUrl: "/downloads/undangan-digital-wedding.zip",
+      tutorialUrl: "https://www.youtube.com/watch?v=TUTORIAL_UNDANGAN_WEDDING",
       fileSize: "5.2 MB",
       version: "v1.0.0",
       techStack: ["HTML", "CSS", "JavaScript"],
@@ -170,6 +173,15 @@ export default function TemplateSayaPage() {
                       >
                         <i className="bi bi-download me-2"></i>
                         Download .zip
+                      </a>
+                      <a
+                        href={tpl.tutorialUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn btn-danger"
+                      >
+                        <i className="bi bi-play-circle me-2"></i>
+                        Cara Pasang Template
                       </a>
                       <a
                         href={tpl.url}

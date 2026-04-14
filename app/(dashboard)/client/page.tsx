@@ -10,6 +10,7 @@ export default function ClientDashboardPage() {
       status: "Aktif",
       url: "https://toko-baju.exliding.my.id",
       downloadUrl: "/downloads/toko-online-spesial.zip",
+      tutorialUrl: "https://www.youtube.com/watch?v=TUTORIAL_TOKO_ONLINE",
       fileSize: "12.4 MB",
       version: "v2.1.0",
     },
@@ -21,6 +22,7 @@ export default function ClientDashboardPage() {
       status: "Maintenance",
       url: "https://corps.exliding.my.id",
       downloadUrl: "/downloads/company-profile-premium.zip",
+      tutorialUrl: "https://www.youtube.com/watch?v=TUTORIAL_COMPANY_PROFILE",
       fileSize: "8.7 MB",
       version: "v1.3.2",
     },
@@ -32,6 +34,7 @@ export default function ClientDashboardPage() {
       status: "Berakhir",
       url: "https://wedding.exliding.my.id",
       downloadUrl: "/downloads/undangan-digital-wedding.zip",
+      tutorialUrl: "https://www.youtube.com/watch?v=TUTORIAL_UNDANGAN_WEDDING",
       fileSize: "5.2 MB",
       version: "v1.0.0",
     },
@@ -145,7 +148,6 @@ export default function ClientDashboardPage() {
                           <th>Kategori</th>
                           <th>Tanggal Pembelian</th>
                           <th>Versi</th>
-                          <th>Status</th>
                           <th className="text-center">Aksi</th>
                         </tr>
                       </thead>
@@ -169,19 +171,7 @@ export default function ClientDashboardPage() {
                                 {tpl.version}
                               </span>
                             </td>
-                            <td>
-                              <span
-                                className={`badge ${
-                                  tpl.status === "Aktif"
-                                    ? "text-bg-success"
-                                    : tpl.status === "Maintenance"
-                                    ? "text-bg-warning"
-                                    : "text-bg-danger"
-                                }`}
-                              >
-                                {tpl.status}
-                              </span>
-                            </td>
+
                             <td className="text-center">
                               <div className="btn-group" role="group">
                                 <a
@@ -192,6 +182,16 @@ export default function ClientDashboardPage() {
                                 >
                                   <i className="bi bi-download me-1"></i>{" "}
                                   Download
+                                </a>
+                                <a
+                                  href={tpl.tutorialUrl}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="btn btn-sm btn-danger"
+                                  title="Cara Pasang Template"
+                                >
+                                  <i className="bi bi-play-circle me-1"></i>{" "}
+                                  Cara Pasang
                                 </a>
                                 <a
                                   href={tpl.url}
