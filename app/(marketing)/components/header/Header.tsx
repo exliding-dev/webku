@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu, X, Code2, Zap, Globe, Moon, Sun,
   ChevronDown, BookOpen, Rocket, LayoutDashboard, ShoppingBag,
+  LogIn, UserPlus,
 } from "lucide-react";
 
 const LAYANAN_SUBMENU = [
@@ -154,9 +155,23 @@ export default function Header() {
             ))}
 
 
-            <Link href="/kontak" className="ml-4 brutal-btn">
-              Konsultasi Gratis
-            </Link>
+            {/* Auth Buttons */}
+            <div className="ml-4 flex items-center gap-2">
+              <Link
+                href="/login"
+                className="flex items-center gap-1.5 px-4 py-2 text-sm font-bold uppercase tracking-wider transition-all duration-200 text-foreground brutal-border bg-white dark:bg-brutal-bg hover:bg-brutal-accent hover:text-brutal-border brutal-shadow-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+              >
+                <LogIn className="h-4 w-4" />
+                Login
+              </Link>
+              <Link
+                href="/register"
+                className="flex items-center gap-1.5 px-4 py-2 text-sm font-bold uppercase tracking-wider transition-all duration-200 text-primary-foreground bg-primary brutal-border brutal-shadow-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+              >
+                <UserPlus className="h-4 w-4" />
+                Daftar
+              </Link>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -236,7 +251,26 @@ export default function Header() {
             <Globe className="h-4 w-4" /> Kontak
           </Link>
 
-          <div className="pt-4">
+          {/* Auth Buttons */}
+          <div className="pt-4 space-y-2">
+            <div className="grid grid-cols-2 gap-2">
+              <Link
+                href="/login"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold uppercase tracking-wide text-foreground brutal-border bg-white dark:bg-brutal-bg hover:bg-brutal-accent hover:text-brutal-border transition-all brutal-shadow-sm hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none"
+              >
+                <LogIn className="h-4 w-4" />
+                Login
+              </Link>
+              <Link
+                href="/register"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold uppercase tracking-wide text-primary-foreground bg-primary brutal-border transition-all brutal-shadow-sm hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none"
+              >
+                <UserPlus className="h-4 w-4" />
+                Daftar
+              </Link>
+            </div>
             <Link
               href="/kontak"
               onClick={() => setIsOpen(false)}
