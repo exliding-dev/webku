@@ -6,8 +6,12 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
+  provider = "postgresql"
 }
+
+// =============================================
+// AUTH MODELS (Supabase / NextAuth compatible)
+// =============================================
 
 model User {
   id               String          @id @default(cuid())
@@ -18,6 +22,7 @@ model User {
   password         String?         // hashed password for credentials login
   resetToken       String?         // token for forgot password
   resetTokenExpiry DateTime?       // expiry for reset token
+  role             String          @default("user") // "user" | "admin"
   accounts         Account[]
   sessions         Session[]
   Authenticator    Authenticator[] // Optional for WebAuthn support
@@ -78,3 +83,5 @@ model Authenticator {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+
