@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { getAllPosts, getPostBySlugAsync, getAllPostsAsync } from "@/lib/blog";
 import {
   ArrowLeft,
   Calendar,
@@ -11,6 +11,8 @@ import {
 } from "lucide-react";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import RelatedPortfolios from "./RelatedPortfolios";
+import PayloadRichText from "./PayloadRichText";
 
 function formatDate(dateStr: string) {
   const date = new Date(dateStr);
@@ -34,7 +36,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlugAsync(slug);
   if (!post) return { title: "Artikel Tidak Ditemukan" };
   return {
     title: `${post.title} — Exliding Blog`,
@@ -48,12 +50,12 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlugAsync(slug);
 
   if (!post) notFound();
 
   // Get related posts (excluding current)
-  const allPosts = getAllPosts();
+  const allPosts = await getAllPostsAsync();
   const relatedPosts = allPosts
     .filter((p) => p.slug !== post.slug)
     .slice(0, 2);
@@ -119,8 +121,19 @@ export default async function BlogPostPage({
 
           {/* Article Content */}
           <div className="prose-brutal mb-16">
-            <MDXRemote source={post.content} />
+            {post.isFromCMS ? (
+              <PayloadRichText content={post.content} />
+            ) : (
+              <MDXRemote source={post.content} />
+            )}
           </div>
+
+          {/* Related Portfolio Products */}
+          {post.relatedPortfolios && post.relatedPortfolios.length > 0 && (
+            <div className="border-t-4 border-brutal-border pt-10 mb-16">
+              <RelatedPortfolios portfolios={post.relatedPortfolios} />
+            </div>
+          )}
 
           {/* Related Posts */}
           {relatedPosts.length > 0 && (

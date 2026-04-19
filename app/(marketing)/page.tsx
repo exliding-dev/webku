@@ -6,10 +6,10 @@ import FAQ from "./components/faq/FAQ";
 import Blog from "./components/blog/Blog";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
-import { getLatestPosts } from "@/lib/blog";
+import { getLatestPostsAsync } from "@/lib/blog";
 
-export default function Home() {
-  const latestPosts = getLatestPosts(3);
+export default async function Home() {
+  const latestPosts = await getLatestPostsAsync(3);
 
   return (
     <>

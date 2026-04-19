@@ -1,7 +1,7 @@
 import PortfolioClient from "./PortfolioClient";
-import { getAllPortfolioItems } from "@/lib/portfolio";
+import { getAllPortfolioItemsAsync } from "@/lib/portfolio";
 
-export default function Portfolio() {
-  const items = getAllPortfolioItems();
+export default async function Portfolio() {
+  const items = await getAllPortfolioItemsAsync();
   return <PortfolioClient items={items} />;
 }

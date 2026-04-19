@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getAllPosts } from "@/lib/blog";
+import { getAllPostsAsync } from "@/lib/blog";
 import { Calendar, Tag, ArrowRight, ArrowLeft, Newspaper } from "lucide-react";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
@@ -21,8 +21,8 @@ export const metadata = {
     "Baca artikel terbaru seputar web development, SEO, dan digital marketing untuk bisnis Anda.",
 };
 
-export default function BlogListPage() {
-  const posts = getAllPosts();
+export default async function BlogListPage() {
+  const posts = await getAllPostsAsync();
 
   return (
     <>

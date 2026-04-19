@@ -746,7 +746,7 @@ export default function PaketPage({ plans }: { plans: Product[] }) {
                       viewport={{ once: true }}
                       className="space-y-3"
                     >
-                      {plan.features.map((feature, idx) => (
+                      {plan.features.map((feature: string, idx: number) => (
                         <motion.li
                           key={idx}
                           variants={featureItem}

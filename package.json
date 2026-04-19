@@ -14,6 +14,7 @@
     "@fontsource/syne": "^5.2.7",
     "@next/swc-linux-x64-gnu": "^16.2.3",
     "@payloadcms/db-postgres": "^3.83.0",
+    "@payloadcms/email-nodemailer": "^3.83.0",
     "@payloadcms/next": "^3.83.0",
     "@payloadcms/richtext-lexical": "^3.83.0",
     "@payloadcms/ui": "^3.83.0",
