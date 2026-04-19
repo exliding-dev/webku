@@ -29,6 +29,7 @@ const LINKS_LAYANAN = [
 const LINKS_NAVIGASI = [
   { label: "Beranda", href: "#home" },
   { label: "Portfolio", href: "#portfolio" },
+  { label: "Tentang", href: "/tentang-kami" },
   { label: "Promo", href: "#promo" },
   { label: "Kontak", href: "/kontak" },
 ];

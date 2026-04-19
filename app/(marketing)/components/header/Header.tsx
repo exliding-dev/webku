@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu, X, Code2, Zap, Globe, Moon, Sun,
   ChevronDown, BookOpen, Rocket, LayoutDashboard, ShoppingBag,
-  LogIn, UserPlus,
+  LogIn, UserPlus, Info,
 } from "lucide-react";
 
 const LAYANAN_SUBMENU = [
@@ -44,6 +44,7 @@ const LAYANAN_SUBMENU = [
 const simpleNavItems = [
   { name: "Beranda", href: "/#home", icon: <Globe className="w-4 h-4" /> },
   { name: "Portfolio", href: "/#portfolio", icon: <Code2 className="w-4 h-4" /> },
+  { name: "Tentang", href: "/tentang-kami", icon: <Info className="w-4 h-4" /> },
   { name: "Blog", href: "/blog", icon: <BookOpen className="w-4 h-4" /> },
   { name: "Kontak", href: "/kontak", icon: <Globe className="w-4 h-4" /> },
 ];
@@ -241,6 +242,10 @@ export default function Header() {
           <Link href="/#portfolio" onClick={() => setIsOpen(false)}
             className="flex items-center gap-3 px-4 py-3 text-sm font-bold uppercase tracking-wide text-foreground transition-all brutal-border hover:bg-brutal-accent hover:text-brutal-border">
             <Code2 className="h-4 w-4" /> Portfolio
+          </Link>
+          <Link href="/tentang-kami" onClick={() => setIsOpen(false)}
+            className="flex items-center gap-3 px-4 py-3 text-sm font-bold uppercase tracking-wide text-foreground transition-all brutal-border hover:bg-brutal-accent hover:text-brutal-border">
+            <Info className="h-4 w-4" /> Tentang
           </Link>
           <Link href="/blog" onClick={() => setIsOpen(false)}
             className="flex items-center gap-3 px-4 py-3 text-sm font-bold uppercase tracking-wide text-foreground transition-all brutal-border hover:bg-brutal-accent hover:text-brutal-border">
