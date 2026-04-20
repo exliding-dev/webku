@@ -18,7 +18,7 @@ export default buildConfig({
   admin: {
     user: Users.slug,
   },
-  email: nodemailerAdapter({
+  email: process.env.EMAIL_SERVER_USER ? nodemailerAdapter({
     defaultFromAddress: process.env.EMAIL_FROM || 'info@exliding.com',
     defaultFromName: 'Exliding Admin',
     transportOptions: {
@@ -29,7 +29,7 @@ export default buildConfig({
         pass: process.env.EMAIL_SERVER_PASSWORD,
       },
     },
-  }),
+  }) : undefined,
   collections: [Users, Products, Portfolios, BlogPosts, Media],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || 'payload-secret-dev',
@@ -37,7 +37,6 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },
-    push: true,
   }),
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

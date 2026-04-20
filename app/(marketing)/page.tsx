@@ -7,11 +7,11 @@ import Blog from "./components/blog/Blog";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import { getLatestPostsAsync } from "@/lib/blog";
-import { getAllProducts } from "@/lib/products";
+import { getServices } from "@/lib/services";
 
 export default async function Home() {
   const latestPosts = await getLatestPostsAsync(3);
-  const plans = await getAllProducts();
+  const plans = await getServices();
 
   return (
     <>
