@@ -8,6 +8,7 @@ import { Users } from './src/collections/Users'
 import { Products } from './src/collections/Products'
 import { Portfolios } from './src/collections/Portfolios'
 import { BlogPosts } from './src/collections/BlogPosts'
+import { Media } from './src/collections/Media'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -29,7 +30,7 @@ export default buildConfig({
       },
     },
   }),
-  collections: [Users, Products, Portfolios, BlogPosts],
+  collections: [Users, Products, Portfolios, BlogPosts, Media],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || 'payload-secret-dev',
   db: postgresAdapter({

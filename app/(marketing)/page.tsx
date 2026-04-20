@@ -7,9 +7,11 @@ import Blog from "./components/blog/Blog";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import { getLatestPostsAsync } from "@/lib/blog";
+import { getAllProducts } from "@/lib/products";
 
 export default async function Home() {
   const latestPosts = await getLatestPostsAsync(3);
+  const plans = await getAllProducts();
 
   return (
     <>
@@ -19,7 +21,7 @@ export default async function Home() {
       <Hero />
 
       {/* Services Section */}
-      <Services />
+      <Services plans={plans} />
 
       {/* Portfolio Section */}
       <Portfolio />

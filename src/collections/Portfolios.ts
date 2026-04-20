@@ -49,11 +49,12 @@ export const Portfolios: CollectionConfig = {
     },
     {
       name: 'image',
-      type: 'text',
+      type: 'upload',
+      relationTo: 'media',
       required: true,
-      label: 'Path Gambar',
+      label: 'Gambar Proyek',
       admin: {
-        description: 'Path gambar relatif dari /public. Contoh: /Portfolio/autobintantaxi.jpg',
+        description: 'Upload gambar utama proyek.',
       },
     },
     {

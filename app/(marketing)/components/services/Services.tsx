@@ -44,82 +44,13 @@ const featureItem = {
   },
 };
 
-// ─── Data ────────────────────────────────────────────────────────────────────
-
-const plans = [
-  {
-    name: "Paket Starter",
-    price: "Rp 1.000.000",
-    description: "sekali bayar",
-    features: [
-      "Gratis Domain .com atau .net selama 1 tahun",
-      "Hosting RAM 1 GB & Storage 2 GB",
-      "Free SSL untuk keamanan",
-      "Backup Harian",
-      "Desain Premium & Responsif",
-      "2 Artikel SEO-ready",
-      "Setup Protection",
-      "1 Halaman (utama + tambahan)",
-    ],
-    footers: [
-      "Perpanjangan: Rp600.000",
-      "Catatan: Tidak termasuk cPanel"
-    ],
-    buttonText: "Pesan Sekarang",
-    popular: false,
-    link: `https://wa.me/${process.env.NEXT_PUBLIC_CONTACT_PHONE}?text=Halo%20saya%20tertarik%20dengan%20Paket%20Starter`,
-  },
-  {
-    name: "Paket Pro",
-    price: "Rp 1.500.000",
-    description: "sekali bayar",
-    features: [
-      "Gratis Domain .com atau .net selama 1 tahun",
-      "Hosting SSD RAM 3 GB & Storage 5 GB",
-      "Free SSL untuk keamanan",
-      "Backup Harian",
-      "Desain Premium & Responsif",
-      "4 Artikel SEO-ready",
-      "Setup Protection",
-      "7 Halaman fleksibel",
-      "free 1 tahun elementor pro",
-    ],
-    footers: [
-      "Perpanjangan: Rp850.000",
-      "Catatan: Tidak termasuk cPanel"
-    ],
-    buttonText: "Pesan Sekarang",
-    popular: true,
-    link: `https://wa.me/${process.env.NEXT_PUBLIC_CONTACT_PHONE}?text=Halo%20saya%20tertarik%20dengan%20Paket%20Pro`,
-  },
-  {
-    name: "Paket Bisnis",
-    price: "Rp 3.000.000",
-    description: "sekali bayar",
-    features: [
-      "Gratis Domain .com atau .net selama 1 tahun",
-      "Hosting SSD RAM 6 GB & Unlimited Storage",
-      "Termasuk H Panel",
-      "Free SSL untuk keamanan",
-      "Backup Harian",
-      "Desain Premium & Responsif",
-      "free 2 tahun elementor pro",
-      "10 Halaman fleksibel",
-      "6 Artikel SEO-ready",
-      "Setup Protection",
-    ],
-    footers: [
-      "Perpanjangan: Rp1.500.000"
-    ],
-    buttonText: "Pesan Sekarang",
-    popular: false,
-    link: `https://wa.me/${process.env.NEXT_PUBLIC_CONTACT_PHONE}?text=Halo%20saya%20tertarik%20dengan%20Paket%20Bisnis`,
-  }
-];
+import type { Product } from "@/lib/products";
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
-export default function Services() {
+export default function Services({ plans }: { plans: Product[] }) {
+  const defaultActionUrl = `https://wa.me/${process.env.NEXT_PUBLIC_CONTACT_PHONE}?text=Halo%20saya%20tertarik`;
+
   return (
     <section id="layanan" className="py-24 bg-brutal-bg brutal-border-b relative overflow-hidden">
       {/* Decorative brutalist background elements */}
@@ -186,7 +117,7 @@ export default function Services() {
                       {plan.price}
                     </span>
                     <span className="text-sm font-bold uppercase tracking-wider mt-4 px-2 py-1 bg-foreground text-background brutal-border inline-block rotate-1">
-                      /{plan.description}
+                      {plan.period}
                     </span>
                   </div>
                 </CardHeader>
@@ -217,11 +148,11 @@ export default function Services() {
                   </motion.ul>
 
                   <div className="mt-6 pt-6 brutal-border-t space-y-2">
-                    {plan.footers.map((footer, idx) => (
-                      <p key={idx} className="text-xs text-center font-bold tracking-wider uppercase bg-white text-foreground px-2 py-1 brutal-border inline-block rotate-1 mx-auto block mb-1">
-                        {footer}
+                    {plan.tagline && (
+                      <p className="text-xs text-center font-bold tracking-wider uppercase bg-white text-foreground px-2 py-1 brutal-border inline-block rotate-1 mx-auto block mb-1">
+                        {plan.tagline}
                       </p>
-                    ))}
+                    )}
                   </div>
                 </CardContent>
 
@@ -238,9 +169,9 @@ export default function Services() {
                           : "hover:bg-brutal-accent hover:text-brutal-border brutal-shadow-[4px_4px_0_0_#111] hover:translate-x-[4px] hover:translate-y-[4px]"
                       }`}
                     >
-                      <a href={plan.link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-full h-full">
+                      <a href={plan.waText ? `https://wa.me/${process.env.NEXT_PUBLIC_CONTACT_PHONE}?text=${plan.waText}` : defaultActionUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-full h-full">
                         <span className="relative z-10 flex items-center gap-2 transition-transform duration-300">
-                          {plan.buttonText}
+                          {plan.cta || "Pesan Sekarang"}
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="18"

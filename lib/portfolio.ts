@@ -38,7 +38,7 @@ async function getPayloadPortfolioItems(): Promise<PortfolioItem[]> {
       slug: (doc.slug as string) || "",
       category: (doc.category as string) || "company",
       categoryLabel: (doc.categoryLabel as string) || "",
-      image: (doc.image as string) || "",
+      image: typeof doc.image === "object" && doc.image !== null ? (doc.image as any).url : (doc.image as string) || "",
       link: (doc.link as string) || "",
       description: (doc.description as string) || "",
       tags: Array.isArray(doc.tags)
