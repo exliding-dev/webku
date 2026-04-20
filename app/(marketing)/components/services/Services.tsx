@@ -147,7 +147,25 @@ export default function Services({ plans }: { plans: Product[] }) {
                     ))}
                   </motion.ul>
 
-                  <div className="mt-6 pt-6 brutal-border-t space-y-2">
+                  <div className="mt-6 pt-4 brutal-border-t space-y-2">
+                    {/* Renewal pricing */}
+                    {plan.renewal && (
+                      <div className="flex items-center gap-2 px-3 py-2 bg-foreground/5 brutal-border">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-primary">
+                          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>
+                        </svg>
+                        <span className="text-xs font-bold uppercase tracking-wide">
+                          Perpanjangan: <span className="text-primary">{plan.renewal}</span>
+                        </span>
+                      </div>
+                    )}
+                    {/* Disclaimer notes */}
+                    {plan.notes && (
+                      <p className="text-[11px] text-center font-semibold tracking-wide text-muted-foreground italic opacity-80">
+                        * {plan.notes}
+                      </p>
+                    )}
+                    {/* Tagline */}
                     {plan.tagline && (
                       <p className="text-xs text-center font-bold tracking-wider uppercase bg-white text-foreground px-2 py-1 brutal-border inline-block rotate-1 mx-auto block mb-1">
                         {plan.tagline}

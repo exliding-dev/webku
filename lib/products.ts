@@ -16,6 +16,8 @@ export interface Product {
   popular: boolean;
   waText: string;
   order: number;
+  renewal?: string | null;  // Harga perpanjangan (e.g. "Rp600.000")
+  notes?: string | null;    // Catatan tambahan (e.g. "Tidak termasuk cPanel")
   // Diskon support untuk payload
   hasDiscount?: boolean;
   discount?: {

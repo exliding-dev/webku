@@ -1,4 +1,6 @@
 import type { Product } from "./products";
+import { getPayload } from "payload";
+import configPromise from "@payload-config";
 
 export const ONE_TIME_SERVICES: Product[] = [
   {
@@ -16,13 +18,13 @@ export const ONE_TIME_SERVICES: Product[] = [
       "2 Artikel SEO-ready",
       "Setup Protection",
       "1 Halaman (utama + tambahan)",
-      "Perpanjangan: Rp600.000",
-      "Catatan: Tidak termasuk cPanel"
     ],
+    renewal: "Rp600.000",
+    notes: "Tidak termasuk cPanel",
     cta: "Pesan Sekarang",
     popular: false,
     waText: "Halo%20saya%20tertarik%20Paket%20Starter",
-    order: 1
+    order: 1,
   },
   {
     id: "pro",
@@ -40,13 +42,13 @@ export const ONE_TIME_SERVICES: Product[] = [
       "Setup Protection",
       "7 Halaman fleksibel",
       "free 1 tahun elementor pro",
-      "Perpanjangan: Rp850.000",
-      "Catatan: Tidak termasuk cPanel"
     ],
+    renewal: "Rp850.000",
+    notes: "Tidak termasuk cPanel",
     cta: "Pesan Sekarang",
     popular: true,
     waText: "Halo%20saya%20tertarik%20Paket%20Pro",
-    order: 2
+    order: 2,
   },
   {
     id: "bisnis",
@@ -65,15 +67,59 @@ export const ONE_TIME_SERVICES: Product[] = [
       "10 Halaman fleksibel",
       "6 Artikel SEO-ready",
       "Setup Protection",
-      "Perpanjangan: Rp1.500.000"
     ],
+    renewal: "Rp1.500.000",
+    notes: undefined,
     cta: "Pesan Sekarang",
     popular: false,
     waText: "Halo%20saya%20tertarik%20Paket%20Bisnis",
-    order: 3
-  }
+    order: 3,
+  },
 ];
 
 export async function getServices(): Promise<Product[]> {
+  try {
+    const payload = await getPayload({ config: configPromise });
+
+    // Ambil data layanan dari Payload CMS
+    const data = await payload.find({
+      collection: "services",
+      where: {
+        isActive: {
+          equals: true,
+        },
+      },
+      sort: "order",
+    });
+
+    if (data.docs && data.docs.length > 0) {
+      return data.docs.map((doc: any) => ({
+        id: doc.slug,
+        name: doc.name,
+        price: doc.price,
+        period: doc.period,
+        tagline: doc.tagline,
+        // Map features dari struktur array ke array string
+        features: doc.features
+          ? doc.features.map((f: any) => f.feature)
+          : [],
+        renewal: doc.renewal || null,
+        notes: doc.notes || null,
+        cta: doc.cta,
+        popular: doc.popular || false,
+        waText: doc.waText || "",
+        order: doc.order || 0,
+        hasDiscount: doc.hasDiscount || false,
+        discount: doc.discount || undefined,
+      }));
+    }
+  } catch (error) {
+    console.warn(
+      "Payload CMS Services belum terisi, fallback ke local data",
+      error
+    );
+  }
+
+  // Jika CMS kosong, kembalikan paket sekali bayar
   return ONE_TIME_SERVICES;
 }

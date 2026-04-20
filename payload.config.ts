@@ -9,6 +9,7 @@ import { Products } from './src/collections/Products'
 import { Portfolios } from './src/collections/Portfolios'
 import { BlogPosts } from './src/collections/BlogPosts'
 import { Media } from './src/collections/Media'
+import { Services } from './src/collections/Services'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -30,13 +31,14 @@ export default buildConfig({
       },
     },
   }) : undefined,
-  collections: [Users, Products, Portfolios, BlogPosts, Media],
+  collections: [Users, Products, Portfolios, BlogPosts, Media, Services],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || 'payload-secret-dev',
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },
+    push: true,
   }),
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
