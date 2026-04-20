@@ -169,3 +169,92 @@ export async function adminLoginAction(
 
   redirect("/admin")
 }
+
+// ─── ADMIN FORGOT PASSWORD ────────────────────────────────────────────────────
+// Memanggil Payload built-in forgot-password endpoint.
+// Payload akan kirim email dengan reset link otomatis (via nodemailer adapter).
+export async function adminForgotPasswordAction(
+  _prevState: AdminAuthState,
+  formData: FormData
+): Promise<AdminAuthState> {
+  const email = (formData.get("email") as string)?.toLowerCase().trim()
+
+  if (!email) return { error: "Email harus diisi." }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!emailRegex.test(email)) return { error: "Format email tidak valid." }
+
+  try {
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+
+    // Payload will handle: find user, generate token, send email
+    const res = await fetch(`${siteUrl}/api/users/forgot-password`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+      cache: "no-store",
+    })
+
+    // Payload returns 200 even if email not found (security: prevent user enumeration)
+    // So we always show success to the user
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}))
+      console.error("[AdminForgotPassword] Payload error:", data)
+      // Still show "success" to avoid leaking whether email exists
+    }
+
+    return {
+      success: `Link reset password telah dikirim ke ${email} (jika terdaftar sebagai admin).`,
+    }
+  } catch (error) {
+    console.error("Admin forgot password error:", error)
+    return { error: "Terjadi kesalahan server. Coba lagi nanti." }
+  }
+}
+
+// ─── ADMIN RESET PASSWORD (Confirm) ──────────────────────────────────────────
+// Dipanggil dari halaman /admin/reset-password/confirm?token=xxx
+// Token dikirim oleh Payload melalui email reset.
+export async function adminResetPasswordAction(
+  _prevState: AdminAuthState,
+  formData: FormData
+): Promise<AdminAuthState> {
+  const token = (formData.get("token") as string)?.trim()
+  const password = formData.get("password") as string
+  const confirmPassword = formData.get("confirmPassword") as string
+
+  if (!token) return { error: "Token tidak valid. Minta link reset yang baru." }
+  if (!password || !confirmPassword) return { error: "Password harus diisi." }
+  if (password !== confirmPassword) return { error: "Password dan konfirmasi tidak cocok." }
+  if (password.length < 8) return { error: "Password minimal 8 karakter." }
+
+  try {
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+
+    // Payload reset-password endpoint: validates token and updates password hash
+    const res = await fetch(`${siteUrl}/api/users/reset-password`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token, password }),
+      cache: "no-store",
+    })
+
+    const data = await res.json().catch(() => ({}))
+
+    if (!res.ok) {
+      const msg: string = data?.errors?.[0]?.message || data?.message || ""
+      if (msg.toLowerCase().includes("token") || res.status === 400) {
+        return {
+          error: "Link reset sudah kadaluarsa atau tidak valid. Minta link baru di halaman Lupa Password.",
+        }
+      }
+      console.error("[AdminResetPassword] Payload error:", data)
+      return { error: "Gagal mereset password. Coba lagi atau minta link baru." }
+    }
+
+    return { success: "Password berhasil diperbarui! Silakan login dengan password baru." }
+  } catch (error) {
+    console.error("Admin reset password error:", error)
+    return { error: "Terjadi kesalahan server. Coba lagi nanti." }
+  }
+}

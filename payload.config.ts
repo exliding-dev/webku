@@ -13,12 +13,13 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  serverURL: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   admin: {
     user: Users.slug,
   },
   email: nodemailerAdapter({
     defaultFromAddress: process.env.EMAIL_FROM || 'info@exliding.com',
-    defaultFromName: 'Exliding',
+    defaultFromName: 'Exliding Admin',
     transportOptions: {
       host: process.env.EMAIL_SERVER_HOST || 'smtp.gmail.com',
       port: Number(process.env.EMAIL_SERVER_PORT) || 587,
@@ -30,14 +31,12 @@ export default buildConfig({
   }),
   collections: [Users, Products, Portfolios, BlogPosts],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || 'payload-secret-dev', // Default untuk development (akan diisi .env nanti)
+  secret: process.env.PAYLOAD_SECRET || 'payload-secret-dev',
   db: postgresAdapter({
-    // Payload uses the standard DATABASE_URL environment variable by default
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },
-    // We can define pushing behavior here, but Drizzle setup typically auto-pushes when dev starts if enabled
-    push: true, // Turn on auto push to sync schema in dev
+    push: true,
   }),
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

@@ -125,6 +125,9 @@ function AdminLoginForm() {
             </form>
 
             <div className="auth-stagger-4" style={{ marginTop: "1.5rem", paddingTop: "1.25rem", borderTop: "2px solid #1e1e1e", display: "flex", flexDirection: "column", gap: "0.75rem", alignItems: "center" }}>
+              <Link href="/admin/reset-password" style={{ fontSize: "0.88rem", color: "#666", textDecoration: "none", fontWeight: 600, transition: "color 0.15s" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#f59e0b")} onMouseLeave={(e) => (e.currentTarget.style.color = "#666")}>
+                🔑 <strong style={{ color: "#f59e0b" }}>Lupa Password?</strong> Klik di sini
+              </Link>
               <Link href="/admin/register" style={{ fontSize: "0.88rem", color: "#666", textDecoration: "none", fontWeight: 600, transition: "color 0.15s" }} onMouseEnter={(e) => (e.currentTarget.style.color = "#dc2626")} onMouseLeave={(e) => (e.currentTarget.style.color = "#666")}>
                 Belum punya akun admin? <strong style={{ color: "#dc2626" }}>Daftar sekarang</strong>
               </Link>
