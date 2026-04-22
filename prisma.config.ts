@@ -7,8 +7,8 @@ export default defineConfig({
     path: "prisma/migrations",
   },
   datasource: {
-    // Using pooler URL (port 6543) for both migrations and runtime
-    // since port 5432 (direct) may be blocked by firewall/network
-    url: process.env["DATABASE_URL"]!,
+    // Use DIRECT_URL (non-pooling, port 5432) for migrations and schema push
+    // PgBouncer pooler (port 6543) doesn't support DDL operations
+    url: process.env["DIRECT_URL"] || process.env["DATABASE_URL"]!,
   },
 });

@@ -40,7 +40,8 @@ export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || 'payload-secret-dev',
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || '',
+      connectionString: (process.env.DIRECT_URL || process.env.DATABASE_URL || '').split('?')[0],
+      ssl: { rejectUnauthorized: false },
     },
     push: true,
   }),
