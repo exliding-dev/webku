@@ -16,7 +16,7 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
-  serverURL: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+  serverURL: process.env.NEXT_PUBLIC_SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000'),
   admin: {
     user: Users.slug,
     components: {
@@ -41,7 +41,7 @@ export default buildConfig({
   db: postgresAdapter({
     pool: {
       // Vercel serverless functions require the IPv4 transaction pooler (DATABASE_URL)
-      connectionString: process.env.DATABASE_URL || process.env.DIRECT_URL || '',
+      connectionString: (process.env.DATABASE_URL || process.env.DIRECT_URL || '').split('?')[0],
       ssl: { rejectUnauthorized: false },
     },
     // Only push schema in local dev — on Vercel the schema is already synced
