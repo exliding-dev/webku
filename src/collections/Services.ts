@@ -1,10 +1,40 @@
 import type { CollectionConfig } from 'payload'
+import { revalidatePath } from 'next/cache'
+
+// Hanya admin yang bisa mengelola, publik bisa membaca
+const isAdminOrPublicRead = ({ req: { user } }: any) => {
+  if (user) return true // Logged-in user bisa akses semua
+  return { isActive: { equals: true } } // Publik hanya bisa baca yang aktif
+}
+
+const isAdmin = ({ req: { user } }: any) => Boolean(user)
 
 export const Services: CollectionConfig = {
   slug: 'services',
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'price', 'period', 'popular', 'isActive'],
+    description: 'Kelola layanan/paket website. CRUD lengkap: Tambah, Lihat, Edit, Hapus.',
+  },
+  access: {
+    read: isAdminOrPublicRead,
+    create: isAdmin,
+    update: isAdmin,
+    delete: isAdmin,
+  },
+  hooks: {
+    afterChange: [
+      ({ doc }) => {
+        revalidatePath('/', 'layout')
+        return doc
+      }
+    ],
+    afterDelete: [
+      ({ doc }) => {
+        revalidatePath('/', 'layout')
+        return doc
+      }
+    ],
   },
   fields: [
     {

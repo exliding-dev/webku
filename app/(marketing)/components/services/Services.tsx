@@ -45,7 +45,6 @@ const featureItem = {
 };
 
 import type { Product } from "@/lib/products";
-import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from "react";
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
@@ -132,7 +131,7 @@ export default function Services({ plans }: { plans: Product[] }) {
                     viewport={{ once: true }}
                     className="space-y-3"
                   >
-                    {plan.features.map((feature: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined, idx: Key | null | undefined) => (
+                    {plan.features.map((feature: string, idx: number) => (
                       <motion.li
                         key={idx}
                         variants={featureItem}

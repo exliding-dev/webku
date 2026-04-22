@@ -1,10 +1,39 @@
 import type { CollectionConfig } from 'payload'
+import { revalidatePath } from 'next/cache'
+
+const isAdminOrPublicRead = ({ req: { user } }: any) => {
+  if (user) return true
+  return { isActive: { equals: true } }
+}
+
+const isAdmin = ({ req: { user } }: any) => Boolean(user)
 
 export const Products: CollectionConfig = {
   slug: 'products',
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'price', 'isActive', 'hasDiscount'],
+    description: 'Kelola produk/paket bulanan. CRUD lengkap: Tambah, Lihat, Edit, Hapus.',
+  },
+  access: {
+    read: isAdminOrPublicRead,
+    create: isAdmin,
+    update: isAdmin,
+    delete: isAdmin,
+  },
+  hooks: {
+    afterChange: [
+      ({ doc }) => {
+        revalidatePath('/', 'layout')
+        return doc
+      }
+    ],
+    afterDelete: [
+      ({ doc }) => {
+        revalidatePath('/', 'layout')
+        return doc
+      }
+    ],
   },
   fields: [
     {
@@ -25,10 +54,9 @@ export const Products: CollectionConfig = {
     },
     {
       name: 'price',
-      type: 'number',
+      type: 'text',
       required: true,
-      min: 0,
-      label: 'Harga Normal (Rp)',
+      label: 'Harga (Contoh: Rp 149.000 atau Rp 1.500.000)',
     },
     {
       name: 'period',

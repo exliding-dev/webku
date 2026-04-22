@@ -168,7 +168,7 @@ export default function KontakPage() {
           >
             {[
               { icon: <MessageSquare size={20} strokeWidth={3}/>, title: "WhatsApp", value: `+62 ${process.env.NEXT_PUBLIC_CONTACT_PHONE_DISPLAY || "812 3456 7890"}`, sub: "Respon cepat jam kerja", href: `https://wa.me/${process.env.NEXT_PUBLIC_CONTACT_PHONE || ""}` },
-              { icon: <Mail size={20} strokeWidth={3}/>, title: "Email", value: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "halo@exliding.my.id", sub: "Untuk brief & dokumen", href: `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || ""}` },
+              { icon: <Mail size={20} strokeWidth={3}/>, title: "Email", value: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@exliding.my.id", sub: "Untuk brief & dokumen", href: `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@exliding.my.id"}` },
               { icon: <MapPin size={20} strokeWidth={3}/>, title: "Lokasi", value: "Klaten, Jawa Tengah", sub: "Bisa meeting langsung" },
               { icon: <Clock size={20} strokeWidth={3}/>, title: "Jam Operasional", value: "Sen – Sab, 09.00 – 18.00", sub: "WIB" },
             ].map((item, idx) => (

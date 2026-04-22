@@ -175,7 +175,7 @@ function TemplateCard({ t }: { t: Template }) {
           <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
           <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
           <span className="ml-2 flex flex-1 items-center rounded bg-white/10 px-2 h-5 text-[9px] text-white/40">
-            exliding.my.id
+            www.exliding.my.id
           </span>
         </div>
 

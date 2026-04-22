@@ -18,37 +18,54 @@ export interface PortfolioItem {
   order: number;
 }
 
+import { getPayload } from "payload";
+import configPromise from "@payload-config";
+
 // ─── Fetch from Payload CMS ────────────────────────────────────────────────
 async function getPayloadPortfolioItems(): Promise<PortfolioItem[]> {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-    const res = await fetch(`${baseUrl}/api/portfolios?limit=100&where[isActive][equals]=true&sort=order`, {
-      next: { revalidate: 60 },
+    const payload = await getPayload({ config: configPromise });
+
+    const data = await payload.find({
+      collection: "portfolios",
+      where: {
+        isActive: {
+          equals: true,
+        },
+      },
+      sort: "order",
+      limit: 100,
     });
-
-    if (!res.ok) return [];
-
-    const data = await res.json();
 
     if (!data.docs || !Array.isArray(data.docs)) return [];
 
-    return data.docs.map((doc: Record<string, unknown>, index: number) => ({
-      id: (doc.id as number) || index + 1000,
-      title: (doc.title as string) || "",
-      slug: (doc.slug as string) || "",
-      category: (doc.category as string) || "company",
-      categoryLabel: (doc.categoryLabel as string) || "",
-      image: typeof doc.image === "object" && doc.image !== null ? (doc.image as any).url : (doc.image as string) || "",
-      link: (doc.link as string) || "",
-      description: (doc.description as string) || "",
+    return data.docs.map((doc: any, index: number) => ({
+      id: doc.id || index + 1000,
+      title: doc.title || "",
+      slug: doc.slug || "",
+      category: doc.category || "company",
+      categoryLabel: doc.categoryLabel || "",
+      image: (() => {
+        const rawUrl = typeof doc.image === "object" && doc.image !== null ? doc.image.url : doc.image || "";
+        // Strip origin to use relative path (works in both dev and production)
+        try {
+          const url = new URL(rawUrl);
+          return url.pathname;
+        } catch {
+          return rawUrl; // Already a relative path
+        }
+      })(),
+      link: doc.link || "",
+      description: doc.description || "",
       tags: Array.isArray(doc.tags)
-        ? (doc.tags as Array<{ tag: string }>).map((t) => t.tag)
+        ? doc.tags.map((t: any) => t.tag)
         : [],
-      color: (doc.color as string) || "from-blue-600 to-indigo-700",
+      color: doc.color || "from-blue-600 to-indigo-700",
       featured: Boolean(doc.featured),
-      order: (doc.order as number) || 0,
+      order: doc.order || 0,
     }));
-  } catch {
+  } catch (error) {
+    console.warn("Error fetching portfolios from Payload", error);
     return [];
   }
 }
@@ -83,7 +100,9 @@ export async function getAllPortfolioItemsAsync(): Promise<PortfolioItem[]> {
   );
 
   const merged = [...cmsItems, ...uniqueStatic];
-  return merged.sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
+  return merged
+    .sort((a, b) => (a.order ?? 99) - (b.order ?? 99))
+    .map((item, index) => ({ ...item, id: index + 1 }));
 }
 
 // Synchronous fallback for existing static-only usage (backward compat)

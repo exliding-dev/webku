@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://exliding.my.id"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.exliding.my.id"),
   title: {
     default: "Exliding | Jasa Pembuatan Website Profesional & Murah di Klaten",
     template: "%s | Exliding",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://exliding.my.id",
+    url: "https://www.exliding.my.id",
     title: "Exliding | Jasa Pembuatan Website Profesional & Murah",
     description:
       "Jasa pembuatan website profesional, murah, dan cepat di Klaten. Cocok untuk UMKM, company profile, dan toko online.",

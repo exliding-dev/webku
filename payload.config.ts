@@ -10,6 +10,7 @@ import { Portfolios } from './src/collections/Portfolios'
 import { BlogPosts } from './src/collections/BlogPosts'
 import { Media } from './src/collections/Media'
 import { Services } from './src/collections/Services'
+import { Templates } from './src/collections/Templates'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -18,6 +19,9 @@ export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   admin: {
     user: Users.slug,
+    components: {
+      afterNavLinks: ['@/src/components/admin/LogoutButton#default'],
+    },
   },
   email: process.env.EMAIL_SERVER_USER ? nodemailerAdapter({
     defaultFromAddress: process.env.EMAIL_FROM || 'info@exliding.com',
@@ -31,7 +35,7 @@ export default buildConfig({
       },
     },
   }) : undefined,
-  collections: [Users, Products, Portfolios, BlogPosts, Media, Services],
+  collections: [Users, Products, Portfolios, BlogPosts, Media, Services, Templates],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || 'payload-secret-dev',
   db: postgresAdapter({

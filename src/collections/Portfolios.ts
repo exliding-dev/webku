@@ -1,11 +1,39 @@
 import type { CollectionConfig } from 'payload'
+import { revalidatePath } from 'next/cache'
+
+const isAdminOrPublicRead = ({ req: { user } }: any) => {
+  if (user) return true
+  return { isActive: { equals: true } }
+}
+
+const isAdmin = ({ req: { user } }: any) => Boolean(user)
 
 export const Portfolios: CollectionConfig = {
   slug: 'portfolios',
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'category', 'featured', 'isActive', 'order'],
-    description: 'Kelola item portfolio proyek yang telah dikerjakan.',
+    description: 'Kelola portfolio proyek. CRUD lengkap: Tambah, Lihat, Edit, Hapus.',
+  },
+  access: {
+    read: isAdminOrPublicRead,
+    create: isAdmin,
+    update: isAdmin,
+    delete: isAdmin,
+  },
+  hooks: {
+    afterChange: [
+      ({ doc }) => {
+        revalidatePath('/', 'layout')
+        return doc
+      }
+    ],
+    afterDelete: [
+      ({ doc }) => {
+        revalidatePath('/', 'layout')
+        return doc
+      }
+    ],
   },
   fields: [
     {

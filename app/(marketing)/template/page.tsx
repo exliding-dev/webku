@@ -1,7 +1,7 @@
-import { getAllTemplates } from "@/lib/templates";
+import { getAllTemplatesAsync } from "@/lib/templates";
 import TemplateClient from "./TemplateClient";
 
-export default function TemplatePage() {
-  const templates = getAllTemplates();
+export default async function TemplatePage() {
+  const templates = await getAllTemplatesAsync();
   return <TemplateClient templates={templates} />;
 }

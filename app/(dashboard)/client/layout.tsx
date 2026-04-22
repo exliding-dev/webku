@@ -196,7 +196,7 @@ export default async function ClientDashboardLayout({
           </div>
           <strong style={{ fontSize: 13 }}>
             Copyright &copy; {new Date().getFullYear()}&nbsp;
-            <Link href="/" className="text-decoration-none">Exliding.my.id</Link>.
+            <Link href="/" className="text-decoration-none">www.exliding.my.id</Link>.
           </strong>
           &nbsp;<span className="text-muted" style={{ fontSize: 13 }}>All rights reserved.</span>
         </footer>

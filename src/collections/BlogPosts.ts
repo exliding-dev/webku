@@ -1,11 +1,39 @@
 import type { CollectionConfig } from 'payload'
+import { revalidatePath } from 'next/cache'
+
+const isAdminOrPublicRead = ({ req: { user } }: any) => {
+  if (user) return true
+  return { isPublished: { equals: true } }
+}
+
+const isAdmin = ({ req: { user } }: any) => Boolean(user)
 
 export const BlogPosts: CollectionConfig = {
   slug: 'blog-posts',
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'date', 'isPublished', 'author'],
-    description: 'Kelola artikel blog dan hubungkan dengan portfolio produk.',
+    description: 'Kelola artikel blog. CRUD lengkap: Tambah, Lihat, Edit, Hapus.',
+  },
+  access: {
+    read: isAdminOrPublicRead,
+    create: isAdmin,
+    update: isAdmin,
+    delete: isAdmin,
+  },
+  hooks: {
+    afterChange: [
+      ({ doc }) => {
+        revalidatePath('/', 'layout')
+        return doc
+      }
+    ],
+    afterDelete: [
+      ({ doc }) => {
+        revalidatePath('/', 'layout')
+        return doc
+      }
+    ],
   },
   fields: [
     {
