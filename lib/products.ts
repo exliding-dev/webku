@@ -3,7 +3,7 @@ import path from "path";
 import { getPayload } from "payload";
 import configPromise from "@payload-config";
 
-const PRODUCTS_DIR = path.join(process.cwd(), "content/products");
+const PRODUCTS_DIR = path.join(/*turbopackIgnore: true*/ process.cwd(), "content/products");
 
 export interface Product {
   id: string;

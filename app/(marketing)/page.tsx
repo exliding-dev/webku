@@ -9,6 +9,10 @@ import Header from "./components/header/Header";
 import { getLatestPostsAsync } from "@/lib/blog";
 import { getServices } from "@/lib/services";
 
+// Render at request time so Payload CMS data is fetched at runtime,
+// not during build when the DB may be unreachable.
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const latestPosts = await getLatestPostsAsync(3);
   const plans = await getServices();

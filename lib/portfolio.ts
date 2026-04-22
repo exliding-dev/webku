@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const PORTFOLIO_DIR = path.join(process.cwd(), "content/portfolio");
+const PORTFOLIO_DIR = path.join(/*turbopackIgnore: true*/ process.cwd(), "content/portfolio");
 
 export interface PortfolioItem {
   id: number;

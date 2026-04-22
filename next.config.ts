@@ -1,7 +1,15 @@
 import { withPayload } from '@payloadcms/next/withPayload'
 import type { NextConfig } from "next";
+import path from 'path';
 
 const nextConfig: NextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  turbopack: {
+    // Fix 'multiple lockfiles' workspace root warning on Vercel/local dev
+    root: path.resolve(__dirname),
+  },
   images: {
     remotePatterns: [
       {

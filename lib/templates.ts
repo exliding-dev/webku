@@ -3,7 +3,7 @@ import path from "path";
 import { getPayload } from "payload";
 import configPromise from "@payload-config";
 
-const TEMPLATES_DIR = path.join(process.cwd(), "content/templates");
+const TEMPLATES_DIR = path.join(/*turbopackIgnore: true*/ process.cwd(), "content/templates");
 
 export interface Template {
   id: number | string;
