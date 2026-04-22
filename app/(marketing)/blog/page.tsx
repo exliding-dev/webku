@@ -21,6 +21,9 @@ export const metadata = {
     "Baca artikel terbaru seputar web development, SEO, dan digital marketing untuk bisnis Anda.",
 };
 
+// Render at request time so CMS data is always fresh
+export const dynamic = "force-dynamic";
+
 export default async function BlogListPage() {
   const posts = await getAllPostsAsync();
 

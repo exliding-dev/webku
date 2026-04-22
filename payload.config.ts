@@ -43,7 +43,9 @@ export default buildConfig({
       connectionString: (process.env.DIRECT_URL || process.env.DATABASE_URL || '').split('?')[0],
       ssl: { rejectUnauthorized: false },
     },
-    push: true,
+    // Only push schema in local dev — on Vercel the schema is already synced
+    // and pgBouncer pooler doesn't support the DDL introspection queries
+    push: !process.env.VERCEL,
   }),
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
