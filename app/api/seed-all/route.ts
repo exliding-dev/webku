@@ -263,7 +263,7 @@ const PORTFOLIOS_DATA = [
 // ─── TEMPLATES DATA ─────────────────────────────────────────────────────────
 
 function loadTemplatesFromJSON(): any[] {
-  const dir = path.join(process.cwd(), 'content/templates')
+  const dir = path.join(/*turbopackIgnore: true*/ process.cwd(), 'content/templates')
   if (!fs.existsSync(dir)) return []
 
   const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json'))
@@ -338,7 +338,7 @@ async function uploadPortfolioImage(
   imagePath: string,
   alt: string,
 ): Promise<number | null> {
-  const fullPath = path.join(process.cwd(), imagePath)
+  const fullPath = path.join(/*turbopackIgnore: true*/ process.cwd(), imagePath)
   if (!fs.existsSync(fullPath)) {
     console.warn(`Image not found: ${fullPath}`)
     return null

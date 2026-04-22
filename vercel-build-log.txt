@@ -1,0 +1,191 @@
+WARNING! Build not running on Vercel. System environment variables will not be available.
+WARNING: You should not upload the `.next` directory.
+Installing dependencies...
+
+up to date in 4s
+
+380 packages are looking for funding
+  run `npm fund` for details
+Detected Next.js version: 16.2.3
+Running "npm run build"
+
+> exliding@0.1.0 build
+> next build
+
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+▲ Next.js 16.2.3 (Turbopack)
+- Environments: .env
+- Experiments (use with caution):
+  ⨯ turbopackServerFastRefresh
+
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+Turbopack build encountered 1 warnings:
+./next.config.ts
+Encountered unexpected file in NFT list
+A file was traced that indicates that the whole project was traced unintentionally. Somewhere in the import trace below, there are:
+- filesystem operations (like path.join, path.resolve or fs.readFile), or
+- very dynamic requires (like require('./' + foo)).
+To resolve this, you can
+- remove them if possible, or
+- only use them in development, or
+- make sure they are statically scoped to some subfolder: path.join(process.cwd(), 'data', bar), or
+- add ignore comments: path.join(/*turbopackIgnore: true*/ process.cwd(), bar)
+
+Import trace:
+  App Route:
+    ./next.config.ts
+    ./app/api/seed-all/route.ts
+
+
+✓ Compiled successfully in 85s
+  Running TypeScript ...
+  Finished TypeScript in 33.5s ...
+  Collecting page data using 3 workers ...
+  Generating static pages using 3 workers (0/29) ...
+[11:46:27] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: connect ECONNREFUSED 127.0.0.1:5432[39m
+    err: {
+      "type": "Error",
+      "message": "connect ECONNREFUSED 127.0.0.1:5432",
+      "stack":
+          Error: connect ECONNREFUSED 127.0.0.1:5432
+              at /home/wahyupuji/Desktop/bangun/webku/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/home/wahyupuji/Desktop/bangun/webku/.next/server/chunks/ssr/_0-kilx~._.js:292:30285)
+              at async Object.h [as connect] (/home/wahyupuji/Desktop/bangun/webku/.next/server/chunks/ssr/_0-kilx~._.js:292:30527)
+              at async bv.init (/home/wahyupuji/Desktop/bangun/webku/.next/server/chunks/ssr/_0-kilx~._.js:136:14686)
+      "errno": -111,
+      "code": "ECONNREFUSED",
+      "syscall": "connect",
+      "address": "127.0.0.1",
+      "port": 5432
+    }
+Payload CMS belum terisi, fallback ke lokal file JSON Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:5432
+    at <unknown> (Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:5432)
+    at Object.h [as connect] (.next/server/chunks/ssr/_0-kilx~._.js:292:31693)
+    at async bv.init (.next/server/chunks/ssr/_0-kilx~._.js:136:14686) {
+  payloadInitError: true
+}
+Payload CMS Templates belum terisi, fallback ke local data Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:5432
+    at <unknown> (Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:5432)
+    at Object.h [as connect] (.next/server/chunks/ssr/_0-kilx~._.js:292:31693)
+    at async bv.init (.next/server/chunks/ssr/_0-kilx~._.js:136:14686) {
+  payloadInitError: true
+}
+undefined
+  Generating static pages using 3 workers (7/29) 
+  Generating static pages using 3 workers (14/29) 
+  Generating static pages using 3 workers (21/29) 
+[11:46:31] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: connect ECONNREFUSED 127.0.0.1:5432[39m
+    err: {
+      "type": "Error",
+      "message": "connect ECONNREFUSED 127.0.0.1:5432",
+      "stack":
+          Error: connect ECONNREFUSED 127.0.0.1:5432
+              at /home/wahyupuji/Desktop/bangun/webku/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/home/wahyupuji/Desktop/bangun/webku/.next/server/chunks/ssr/_0-kilx~._.js:292:30285)
+              at async Object.h [as connect] (/home/wahyupuji/Desktop/bangun/webku/.next/server/chunks/ssr/_0-kilx~._.js:292:30527)
+              at async bv.init (/home/wahyupuji/Desktop/bangun/webku/.next/server/chunks/ssr/_0-kilx~._.js:136:14686)
+              at async by (/home/wahyupuji/Desktop/bangun/webku/.next/server/chunks/ssr/_0-kilx~._.js:136:17864)
+              at async g (/home/wahyupuji/Desktop/bangun/webku/.next/server/chunks/ssr/[root-of-the-server]__0ycymiz._.js:1:17166)
+              at async p (/home/wahyupuji/Desktop/bangun/webku/.next/server/chunks/ssr/[root-of-the-server]__0ycymiz._.js:1:18042)
+      "errno": -111,
+      "code": "ECONNREFUSED",
+      "syscall": "connect",
+      "address": "127.0.0.1",
+      "port": 5432
+    }
+Payload CMS Services belum terisi, fallback ke local data Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:5432
+    at <unknown> (Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:5432)
+    at Object.h [as connect] (.next/server/chunks/ssr/_0-kilx~._.js:292:31693)
+    at async bv.init (.next/server/chunks/ssr/_0-kilx~._.js:136:14686)
+    at async by (.next/server/chunks/ssr/_0-kilx~._.js:136:17864)
+    at async g (.next/server/chunks/ssr/[root-of-the-server]__0ycymiz._.js:1:17166)
+    at async p (.next/server/chunks/ssr/[root-of-the-server]__0ycymiz._.js:1:18042) {
+  payloadInitError: true
+}
+undefined
+[11:46:31] [31mERROR[39m: [36mError: cannot connect to Postgres. Details: connect ECONNREFUSED 127.0.0.1:5432[39m
+    err: {
+      "type": "Error",
+      "message": "connect ECONNREFUSED 127.0.0.1:5432",
+      "stack":
+          Error: connect ECONNREFUSED 127.0.0.1:5432
+              at /home/wahyupuji/Desktop/bangun/webku/node_modules/pg-pool/index.js:45:11
+              at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+              at async g (/home/wahyupuji/Desktop/bangun/webku/.next/server/chunks/ssr/_0-kilx~._.js:292:30285)
+              at async Object.h [as connect] (/home/wahyupuji/Desktop/bangun/webku/.next/server/chunks/ssr/_0-kilx~._.js:292:30527)
+              at async bv.init (/home/wahyupuji/Desktop/bangun/webku/.next/server/chunks/ssr/_0-kilx~._.js:136:14686)
+              at async by (/home/wahyupuji/Desktop/bangun/webku/.next/server/chunks/ssr/_0-kilx~._.js:136:17864)
+              at async i (/home/wahyupuji/Desktop/bangun/webku/.next/server/chunks/ssr/[root-of-the-server]__0ycymiz._.js:1:10917)
+              at async j (/home/wahyupuji/Desktop/bangun/webku/.next/server/chunks/ssr/[root-of-the-server]__0ycymiz._.js:1:11659)
+              at async h (/home/wahyupuji/Desktop/bangun/webku/.next/server/chunks/ssr/[root-of-the-server]__0ycymiz._.js:1:12237)
+      "errno": -111,
+      "code": "ECONNREFUSED",
+      "syscall": "connect",
+      "address": "127.0.0.1",
+      "port": 5432
+    }
+Error fetching portfolios from Payload Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:5432
+    at <unknown> (Error: Error: cannot connect to Postgres: connect ECONNREFUSED 127.0.0.1:5432)
+    at Object.h [as connect] (.next/server/chunks/ssr/_0-kilx~._.js:292:31693)
+    at async bv.init (.next/server/chunks/ssr/_0-kilx~._.js:136:14686)
+    at async by (.next/server/chunks/ssr/_0-kilx~._.js:136:17864)
+    at async i (.next/server/chunks/ssr/[root-of-the-server]__0ycymiz._.js:1:10917)
+    at async j (.next/server/chunks/ssr/[root-of-the-server]__0ycymiz._.js:1:11659)
+    at async h (.next/server/chunks/ssr/[root-of-the-server]__0ycymiz._.js:1:12237) {
+  payloadInitError: true
+}
+undefined
+✓ Generating static pages using 3 workers (29/29) in 6.0s
+  Finalizing page optimization ...
+
+Route (app)                        Revalidate  Expire
+┌ ○ /                                      1m      1y
+├ ○ /_not-found
+├ ƒ /admin/[[...segments]]
+├ ○ /admin/login
+├ ○ /admin/register
+├ ○ /admin/reset-password
+├ ○ /admin/reset-password/confirm
+├ ƒ /api/[...slug]
+├ ƒ /api/seed-admin
+├ ƒ /api/seed-all
+├ ƒ /api/seed-services
+├ ƒ /auth/callback
+├ ○ /blog                                  1m      1y
+├ ● /blog/[slug]                           1m      1y
+│ ├ /blog/tips-website-menjual             1m      1y
+│ ├ /blog/pentingnya-seo                   1m      1y
+│ └ /blog/website-vs-social-media          1m      1y
+├ ƒ /client
+├ ƒ /client/templates
+├ ○ /course
+├ ○ /forgot-password
+├ ƒ /graphql
+├ ○ /kontak
+├ ○ /login
+├ ○ /paket
+├ ○ /register
+├ ○ /reset-password
+├ ○ /robots.txt
+├ ○ /sitemap.xml
+├ ○ /template
+└ ○ /tentang-kami
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
+Traced Next.js server files in: 537.487ms
+Created all serverless functions in: 1.838s
+Collected static files (public/, static/, .next/static): 29.474ms
+Build Completed in .vercel/output [2m]
