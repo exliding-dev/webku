@@ -39,27 +39,14 @@ export default buildConfig({
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || 'payload-secret-dev',
   db: postgresAdapter({
-    pool: (() => {
-      // On Vercel: use the pooler (DATABASE_URL). The direct host is firewalled.
-      // Locally: use DIRECT_URL (true direct, no pgBouncer) for schema push support.
-      const isVercel = !!process.env.VERCEL
-      if (isVercel) {
-        // Pooler URL — keep all query params (pgbouncer=true, sslmode, etc.)
-        return {
-          connectionString: process.env.DATABASE_URL || '',
-          ssl: { rejectUnauthorized: false },
-        }
-      }
-      // Local dev: strip query params to use direct TCP with SSL option below
-      return {
-        connectionString: (process.env.DIRECT_URL || process.env.DATABASE_URL || '').split('?')[0],
-        ssl: { rejectUnauthorized: false },
-      }
-    })(),
-    // Tables live in the 'payload' schema (created during initial push)
+    pool: {
+      // Vercel serverless functions require the IPv4 transaction pooler (DATABASE_URL)
+      connectionString: process.env.DATABASE_URL || process.env.DIRECT_URL || '',
+      ssl: { rejectUnauthorized: false },
+    },
+    // Only push schema in local dev — on Vercel the schema is already synced
+    // and pgBouncer pooler doesn't support the DDL introspection queries
     schemaName: 'payload',
-    // Only push schema in local dev — on Vercel it's already synced
-    // and pgBouncer pooler doesn't support DDL introspection queries
     push: !process.env.VERCEL,
   }),
   typescript: {
