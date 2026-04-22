@@ -45,6 +45,7 @@ export default buildConfig({
     },
     // Only push schema in local dev — on Vercel the schema is already synced
     // and pgBouncer pooler doesn't support the DDL introspection queries
+    schemaName: 'payload',
     push: !process.env.VERCEL,
   }),
   typescript: {
