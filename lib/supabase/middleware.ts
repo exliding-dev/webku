@@ -47,8 +47,8 @@ export async function updateSession(request: NextRequest) {
   const authRoutes = ["/login", "/register", "/forgot-password", "/reset-password"]
   const isAuthRoute = authRoutes.some((route) => pathname.startsWith(route))
 
-  // Admin routes
-  const isAdminRoute = pathname.startsWith("/admin")
+  // We no longer intercept /admin here because Payload CMS handles its own authentication
+  // and login page at /admin/login. Payload already has rules to block non-admins.
 
   // --- LOGIC CHECKS ---
 
@@ -57,35 +57,17 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(new URL("/client", request.url))
   }
 
-  // 2. Redirect to login if not authenticated and accessing protected or admin route
-  if ((isProtectedRoute || isAdminRoute) && !user) {
+  // 2. Redirect to login if not authenticated and accessing protected route
+  if (isProtectedRoute && !user) {
     const loginUrl = new URL("/login", request.url)
     loginUrl.searchParams.set("callbackUrl", pathname)
     return NextResponse.redirect(loginUrl)
   }
 
   // 3. Email Verification Block
-  if (user && !user.email_confirmed_at && (isProtectedRoute || isAdminRoute)) {
-    // If accessing protected route but email is not verified, redirect to a generic error or verification page.
-    // For now, redirecting to /client (or login) with error. Let's redirect to login with verification warning
-    // But since the user is technically logged in via Supabase (if soft-confirm is on), we might want to block access completely.
+  if (user && !user.email_confirmed_at && isProtectedRoute) {
     const url = new URL("/login?error=email_not_verified", request.url)
     return NextResponse.redirect(url)
-  }
-
-  // 4. Admin Dashboard Access Block
-  if (isAdminRoute && user) {
-    // Check role in public.profiles
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('role')
-      .eq('id', user.id)
-      .single()
-
-    if (!profile || profile.role !== 'admin') {
-      // Not an admin, redirect to /client
-      return NextResponse.redirect(new URL("/client", request.url))
-    }
   }
 
   return supabaseResponse
