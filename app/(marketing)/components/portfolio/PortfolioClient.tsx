@@ -139,7 +139,7 @@ export default function PortfolioClient({ items }: { items: PortfolioItem[] }) {
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
 
                   {/* Gradient overlay — brutalist sharp */}
