@@ -107,6 +107,22 @@ export const Users: CollectionConfig = {
         readOnly: true,
       },
     },
+    {
+      name: 'inviteToken',
+      type: 'text',
+      label: 'Invite Token',
+      admin: {
+        hidden: true,
+      },
+    },
+    {
+      name: 'inviteTokenExpiry',
+      type: 'date',
+      label: 'Invite Token Expiry',
+      admin: {
+        hidden: true,
+      },
+    },
   ],
   hooks: {
     beforeLogin: [
