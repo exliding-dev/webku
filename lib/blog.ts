@@ -45,7 +45,14 @@ async function getPayloadBlogPosts(): Promise<BlogPost[]> {
               slug: (p.slug as string) || "",
               category: (p.category as string) || "company",
               categoryLabel: (p.categoryLabel as string) || "",
-              image: (p.image as string) || "",
+              image: (() => {
+                const rawUrl = typeof p.image === "object" && p.image !== null ? (p.image as any).url : p.image || "";
+                const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+                if (typeof rawUrl === "string" && rawUrl.startsWith(siteUrl)) {
+                  return rawUrl.replace(siteUrl, "");
+                }
+                return rawUrl as string;
+              })(),
               link: (p.link as string) || "",
               description: (p.description as string) || "",
               tags: Array.isArray(p.tags)
@@ -111,7 +118,14 @@ async function getPayloadBlogPostBySlug(slug: string): Promise<BlogPost | null> 
             slug: (p.slug as string) || "",
             category: (p.category as string) || "company",
             categoryLabel: (p.categoryLabel as string) || "",
-            image: (p.image as string) || "",
+            image: (() => {
+              const rawUrl = typeof p.image === "object" && p.image !== null ? (p.image as any).url : p.image || "";
+              const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+              if (typeof rawUrl === "string" && rawUrl.startsWith(siteUrl)) {
+                return rawUrl.replace(siteUrl, "");
+              }
+              return rawUrl as string;
+            })(),
             link: (p.link as string) || "",
             description: (p.description as string) || "",
             tags: Array.isArray(p.tags)

@@ -47,13 +47,11 @@ async function getPayloadPortfolioItems(): Promise<PortfolioItem[]> {
       categoryLabel: doc.categoryLabel || "",
       image: (() => {
         const rawUrl = typeof doc.image === "object" && doc.image !== null ? doc.image.url : doc.image || "";
-        // Strip origin to use relative path (works in both dev and production)
-        try {
-          const url = new URL(rawUrl);
-          return url.pathname;
-        } catch {
-          return rawUrl; // Already a relative path
+        const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+        if (rawUrl.startsWith(siteUrl)) {
+          return rawUrl.replace(siteUrl, "");
         }
+        return rawUrl;
       })(),
       link: doc.link || "",
       description: doc.description || "",
