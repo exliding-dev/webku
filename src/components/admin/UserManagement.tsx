@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect, useCallback } from 'react'
+import { useAuth } from '@payloadcms/ui'
 
 /* ─── Types ──────────────────────────────────────────────────────────────── */
 interface AdminUser {
@@ -20,8 +21,34 @@ interface SupabaseUser {
 /* ─── Helper: fetch with auth header ──────────────────────────────────────── */
 const SECRET = process.env.NEXT_PUBLIC_ADMIN_SECRET_KEY || ''
 
+/* ─── Unauthorized Screen ────────────────────────────────────────────────── */
+const Unauthorized: React.FC = () => (
+  <div style={{
+    minHeight: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center',
+    justifyContent: 'center', fontFamily: "'Segoe UI', Arial, sans-serif", padding: '40px',
+  }}>
+    <div style={{ fontSize: '48px', marginBottom: '16px' }}>🔒</div>
+    <h2 style={{ color: '#ffffff', fontSize: '22px', fontWeight: 700, margin: '0 0 10px' }}>
+      Akses Ditolak
+    </h2>
+    <p style={{ color: '#71717a', fontSize: '15px', textAlign: 'center', maxWidth: '380px', margin: 0 }}>
+      Halaman ini hanya dapat diakses oleh <strong style={{ color: '#818cf8' }}>Admin</strong> yang telah diverifikasi.
+      Hubungi super-admin jika Anda memerlukan akses.
+    </p>
+  </div>
+)
+
 /* ─── Main Component ─────────────────────────────────────────────────────── */
 const UserManagement: React.FC = () => {
+  const { user } = useAuth()
+  const currentUser = user as any
+
+  // Guard: only role=admin + status=approved can access
+  if (!currentUser || currentUser.role !== 'admin' || currentUser.status !== 'approved') {
+    return <Unauthorized />
+  }
+
+
   const [activeTab, setActiveTab] = useState<'admin' | 'user'>('admin')
   const [admins, setAdmins] = useState<AdminUser[]>([])
   const [users, setUsers] = useState<SupabaseUser[]>([])
@@ -140,7 +167,7 @@ const UserManagement: React.FC = () => {
 
   /* ─── Styles ──────────────────────────────────────────────────────────── */
   const s: Record<string, React.CSSProperties> = {
-    wrap: { padding: '32px', fontFamily: "'Segoe UI', Arial, sans-serif", color: '#e4e4e7' },
+    wrap: { paddingTop: '48px', fontFamily: "'Segoe UI', Arial, sans-serif", color: '#e4e4e7' },
     header: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '28px' },
     title: { fontSize: '24px', fontWeight: 800, color: '#ffffff', margin: 0 },
     subtitle: { fontSize: '14px', color: '#71717a', margin: '4px 0 0' },

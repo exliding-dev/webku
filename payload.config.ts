@@ -20,18 +20,8 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     components: {
-      beforeNavLinks: ['@/src/components/admin/UserManagementNavLink#default'],
+      afterDashboard: ['@/src/components/admin/UserManagement#default'],
       afterNavLinks: ['@/src/components/admin/LogoutButton#default'],
-      views: {
-        userManagement: {
-          Component: '@/src/components/admin/UserManagement#default',
-          path: '/user-management',
-          meta: {
-            title: 'Manajemen User',
-            description: 'Kelola admin dan lihat daftar user',
-          },
-        },
-      },
     },
   },
   email: process.env.EMAIL_SERVER_USER ? nodemailerAdapter({
