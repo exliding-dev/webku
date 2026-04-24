@@ -47,9 +47,14 @@ async function getPayloadPortfolioItems(): Promise<PortfolioItem[]> {
       categoryLabel: doc.categoryLabel || "",
       image: (() => {
         const rawUrl = typeof doc.image === "object" && doc.image !== null ? doc.image.url : doc.image || "";
+        if (!rawUrl) return "";
+        // Strip any known domain prefix so images resolve as relative paths
         const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-        if (rawUrl.startsWith(siteUrl)) {
-          return rawUrl.replace(siteUrl, "");
+        const knownPrefixes = [siteUrl, "https://www.exliding.my.id", "http://localhost:3000"];
+        for (const prefix of knownPrefixes) {
+          if (rawUrl.startsWith(prefix)) {
+            return rawUrl.replace(prefix, "");
+          }
         }
         return rawUrl;
       })(),

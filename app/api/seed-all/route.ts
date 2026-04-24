@@ -260,6 +260,116 @@ const PORTFOLIOS_DATA = [
   },
 ]
 
+// ─── BLOG POSTS DATA ────────────────────────────────────────────────────────
+
+const BLOG_POSTS_DATA = [
+  {
+    slug: 'pentingnya-seo',
+    title: 'Kenapa SEO Penting untuk Bisnis Lokal di Klaten?',
+    date: '2026-02-25',
+    excerpt: 'SEO bukan hanya untuk perusahaan besar. Pelajari bagaimana optimasi mesin pencari bisa mendatangkan pelanggan baru untuk bisnis lokal Anda.',
+    thumbnail: '/blog/seo-penting.jpg',
+    tags: [{ tag: 'SEO' }, { tag: 'bisnis lokal' }, { tag: 'digital marketing' }],
+    author: 'Exliding',
+    content: {
+      root: {
+        type: 'root',
+        children: [
+          { type: 'heading', tag: 'h2', children: [{ type: 'text', text: 'Apa Itu SEO?' }] },
+          { type: 'paragraph', children: [{ type: 'text', text: 'SEO (Search Engine Optimization) adalah teknik untuk membuat website Anda muncul di halaman pertama Google. Ketika seseorang mengetik "jasa website Klaten" atau "toko bangunan terdekat", SEO menentukan apakah bisnis Anda yang muncul atau kompetitor.' }] },
+          { type: 'heading', tag: 'h2', children: [{ type: 'text', text: 'Fakta SEO yang Perlu Anda Tahu' }] },
+          { type: 'list', listType: 'bullet', children: [
+            { type: 'listitem', children: [{ type: 'text', text: '75% pengguna tidak pernah scroll melewati halaman pertama Google', format: ['bold'] }] },
+            { type: 'listitem', children: [{ type: 'text', text: '46% pencarian di Google bersifat lokal', format: ['bold'] }] },
+            { type: 'listitem', children: [{ type: 'text', text: 'Bisnis yang muncul di 3 teratas Google Maps mendapat 70% klik', format: ['bold'] }] },
+          ]},
+          { type: 'heading', tag: 'h2', children: [{ type: 'text', text: 'Strategi SEO untuk Bisnis Lokal' }] },
+          { type: 'heading', tag: 'h3', children: [{ type: 'text', text: 'Google Business Profile' }] },
+          { type: 'paragraph', children: [{ type: 'text', text: 'Langkah pertama yang wajib dilakukan: Klaim profil bisnis Anda di Google, lengkapi semua informasi (alamat, jam buka, foto), dan minta pelanggan untuk memberi review.' }] },
+          { type: 'heading', tag: 'h3', children: [{ type: 'text', text: 'Kata Kunci Lokal' }] },
+          { type: 'paragraph', children: [{ type: 'text', text: 'Gunakan kata kunci yang relevan dengan lokasi seperti "Jasa pembuatan website Klaten", "Web developer Solo Raya", "Desain website murah Jawa Tengah".' }] },
+          { type: 'heading', tag: 'h3', children: [{ type: 'text', text: 'Konten Berkualitas' }] },
+          { type: 'paragraph', children: [{ type: 'text', text: 'Buat blog dan artikel yang bermanfaat: tips dan tutorial, studi kasus proyek, berita terkait industri.' }] },
+          { type: 'paragraph', children: [{ type: 'text', text: 'Jangan biarkan kompetitor mendahului Anda di Google. Tim Exliding siap membantu optimasi SEO website bisnis Anda. Hubungi kami untuk konsultasi gratis!' }] },
+        ],
+        direction: 'ltr',
+        format: '',
+        indent: 0,
+        version: 1,
+      },
+    },
+    isPublished: true,
+  },
+  {
+    slug: 'tips-website-menjual',
+    title: 'Tips Membuat Website yang Menjual untuk Bisnis Lokal',
+    date: '2026-03-01',
+    excerpt: 'Website bukan hanya soal tampilan. Pelajari bagaimana membuat website yang benar-benar menghasilkan pelanggan untuk bisnis Anda di Klaten dan sekitarnya.',
+    thumbnail: '/blog/tips-website.jpg',
+    tags: [{ tag: 'web design' }, { tag: 'tips' }, { tag: 'bisnis lokal' }],
+    author: 'Exliding',
+    content: {
+      root: {
+        type: 'root',
+        children: [
+          { type: 'heading', tag: 'h2', children: [{ type: 'text', text: 'Kenapa Website Penting untuk Bisnis Lokal?' }] },
+          { type: 'paragraph', children: [{ type: 'text', text: 'Di era digital, 97% konsumen mencari bisnis lokal secara online sebelum mengunjungi toko fisik. Jika bisnis Anda di Klaten belum punya website, Anda kehilangan banyak peluang.' }] },
+          { type: 'heading', tag: 'h2', children: [{ type: 'text', text: '5 Tips Website yang Menjual' }] },
+          { type: 'heading', tag: 'h3', children: [{ type: 'text', text: '1. Loading Super Cepat' }] },
+          { type: 'paragraph', children: [{ type: 'text', text: 'Website yang loading lebih dari 3 detik akan ditinggalkan 53% pengunjung. Pastikan website Anda menggunakan hosting yang cepat, optimasi gambar dan aset, serta implementasi lazy loading.' }] },
+          { type: 'heading', tag: 'h3', children: [{ type: 'text', text: '2. Mobile Responsive' }] },
+          { type: 'paragraph', children: [{ type: 'text', text: 'Lebih dari 60% traffic website datang dari smartphone. Website Anda harus tampil sempurna di semua ukuran layar.' }] },
+          { type: 'heading', tag: 'h3', children: [{ type: 'text', text: '3. Call-to-Action yang Jelas' }] },
+          { type: 'paragraph', children: [{ type: 'text', text: 'Setiap halaman harus punya tujuan jelas: tombol "Hubungi Kami" yang menonjol, form kontak yang mudah diisi, nomor WhatsApp yang bisa langsung diklik.' }] },
+          { type: 'heading', tag: 'h3', children: [{ type: 'text', text: '4. SEO-Friendly' }] },
+          { type: 'paragraph', children: [{ type: 'text', text: 'Agar mudah ditemukan di Google: gunakan kata kunci lokal, buat konten berkualitas secara rutin, pastikan struktur website rapi.' }] },
+          { type: 'heading', tag: 'h3', children: [{ type: 'text', text: '5. Testimoni dan Portfolio' }] },
+          { type: 'paragraph', children: [{ type: 'text', text: 'Calon pelanggan perlu bukti. Tampilkan testimoni dari klien sebelumnya, portfolio hasil kerja, rating dan review.' }] },
+          { type: 'paragraph', children: [{ type: 'text', text: 'Website yang menjual bukan soal desain mewah saja, tapi soal strategi yang tepat. Butuh bantuan membuat website untuk bisnis Anda? Konsultasi gratis dengan tim Exliding!' }] },
+        ],
+        direction: 'ltr',
+        format: '',
+        indent: 0,
+        version: 1,
+      },
+    },
+    isPublished: true,
+  },
+  {
+    slug: 'website-vs-social-media',
+    title: 'Website vs Sosial Media: Mana yang Lebih Penting untuk Bisnis?',
+    date: '2026-02-20',
+    excerpt: 'Banyak pemilik bisnis mengandalkan sosial media saja. Tapi apakah itu cukup? Simak perbandingan lengkapnya.',
+    thumbnail: '/blog/website-vs-socmed.jpg',
+    tags: [{ tag: 'web design' }, { tag: 'social media' }, { tag: 'bisnis' }],
+    author: 'Exliding',
+    content: {
+      root: {
+        type: 'root',
+        children: [
+          { type: 'heading', tag: 'h2', children: [{ type: 'text', text: 'Sosial Media Saja Tidak Cukup' }] },
+          { type: 'paragraph', children: [{ type: 'text', text: 'Banyak pemilik bisnis di Klaten yang berpikir: "Saya sudah punya Instagram dan Facebook, buat apa website?" Ini adalah miskonsepsi yang bisa merugikan bisnis Anda.' }] },
+          { type: 'heading', tag: 'h2', children: [{ type: 'text', text: 'Perbandingan Website vs Sosial Media' }] },
+          { type: 'heading', tag: 'h3', children: [{ type: 'text', text: 'Kepemilikan Konten' }] },
+          { type: 'paragraph', children: [{ type: 'text', text: 'Sosial Media: Konten Anda "menumpang" di platform milik orang lain. Akun bisa di-suspend, algoritma bisa berubah. Website: 100% milik Anda. Konten aman dan terkontrol penuh.' }] },
+          { type: 'heading', tag: 'h3', children: [{ type: 'text', text: 'Kredibilitas' }] },
+          { type: 'paragraph', children: [{ type: 'text', text: 'Sosial Media: Siapa saja bisa buat akun. Sulit membedakan bisnis serius dan abal-abal. Website: Memberikan kesan profesional dan terpercaya. Domain sendiri menunjukkan keseriusan bisnis.' }] },
+          { type: 'heading', tag: 'h3', children: [{ type: 'text', text: 'SEO & Discoverability' }] },
+          { type: 'paragraph', children: [{ type: 'text', text: 'Sosial Media: Terbatas pada pengguna platform tersebut. Website: Bisa ditemukan siapa saja melalui Google, kapan saja.' }] },
+          { type: 'heading', tag: 'h2', children: [{ type: 'text', text: 'Solusi Terbaik: Keduanya!' }] },
+          { type: 'paragraph', children: [{ type: 'text', text: 'Strategi optimal adalah menggunakan keduanya secara bersamaan: Website sebagai "rumah utama" bisnis Anda, Sosial Media sebagai saluran promosi yang mengarahkan ke website, Blog di website untuk konten mendalam yang mendukung SEO.' }] },
+          { type: 'paragraph', children: [{ type: 'text', text: 'Jangan tunda lagi! Tim Exliding siap membantu Anda membuat website profesional dengan harga terjangkau. Mulai dari Rp 1 juta saja!' }] },
+        ],
+        direction: 'ltr',
+        format: '',
+        indent: 0,
+        version: 1,
+      },
+    },
+    isPublished: true,
+  },
+]
+
 // ─── TEMPLATES DATA ─────────────────────────────────────────────────────────
 
 function loadTemplatesFromJSON(): any[] {
@@ -398,11 +508,12 @@ export async function GET(req: NextRequest) {
   try {
     const payload = await getPayload({ config: configPromise })
 
-    const [services, products, portfolios, templates] = await Promise.all([
+    const [services, products, portfolios, templates, blogPosts] = await Promise.all([
       payload.find({ collection: 'services', limit: 1 }),
       payload.find({ collection: 'products', limit: 1 }),
       payload.find({ collection: 'portfolios', limit: 1 }),
       payload.find({ collection: 'templates', limit: 1 }),
+      payload.find({ collection: 'blog-posts', limit: 1 }),
     ])
 
     return NextResponse.json({
@@ -412,6 +523,7 @@ export async function GET(req: NextRequest) {
         products: products.totalDocs,
         portfolios: portfolios.totalDocs,
         templates: templates.totalDocs,
+        blogPosts: blogPosts.totalDocs,
       },
       hint: 'POST ke endpoint ini untuk seed semua data.',
     })
@@ -487,6 +599,10 @@ export async function POST(req: NextRequest) {
     console.log('[seed-all] Seeding templates...')
     const templatesData = loadTemplatesFromJSON()
     allResults.templates = await upsertCollection(payload, 'templates', 'slug', templatesData)
+
+    // 5. Seed Blog Posts
+    console.log('[seed-all] Seeding blog posts...')
+    allResults.blogPosts = await upsertCollection(payload, 'blog-posts', 'slug', BLOG_POSTS_DATA)
 
     // Summary
     const totalSeeded = Object.values(allResults).reduce((acc, arr) => acc + arr.length, 0)
