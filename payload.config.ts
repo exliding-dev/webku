@@ -11,6 +11,8 @@ import { BlogPosts } from './src/collections/BlogPosts'
 import { Media } from './src/collections/Media'
 import { Services } from './src/collections/Services'
 import { Templates } from './src/collections/Templates'
+import { Testimonials } from './src/collections/Testimonials'
+import { FAQs } from './src/collections/FAQs'
 
 import { s3Storage } from '@payloadcms/storage-s3'
 
@@ -61,7 +63,7 @@ export default buildConfig({
       },
     },
   }) : undefined,
-  collections: [Users, Products, Portfolios, BlogPosts, Media, Services, Templates],
+  collections: [Users, Products, Portfolios, BlogPosts, Media, Services, Templates, Testimonials, FAQs],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || 'payload-secret-dev',
   db: postgresAdapter({

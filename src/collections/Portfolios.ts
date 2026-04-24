@@ -80,10 +80,32 @@ export const Portfolios: CollectionConfig = {
       type: 'upload',
       relationTo: 'media',
       required: true,
-      label: 'Gambar Proyek',
+      label: 'Gambar Utama (Cover)',
       admin: {
-        description: 'Upload gambar utama proyek.',
+        description: 'Upload gambar utama proyek. Gambar ini ditampilkan di kartu portfolio.',
       },
+    },
+    {
+      name: 'gallery',
+      type: 'array',
+      label: 'Galeri Gambar (Opsional)',
+      admin: {
+        description: 'Tambahkan gambar-gambar tambahan untuk portfolio ini. Gambar cover di atas tetap jadi tampilan utama.',
+      },
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+          label: 'Gambar',
+        },
+        {
+          name: 'caption',
+          type: 'text',
+          label: 'Keterangan (opsional)',
+        },
+      ],
     },
     {
       name: 'link',

@@ -402,6 +402,118 @@ function loadTemplatesFromJSON(): any[] {
   })
 }
 
+// ─── TESTIMONIALS DATA ──────────────────────────────────────────────────────
+
+const TESTIMONIALS_DATA = [
+  {
+    name: 'Budi Santoso',
+    role: 'Pemilik Toko Online',
+    quote: 'Website yang dibuat sangat profesional dan loading-nya super cepat. Penjualan online saya naik 3x lipat sejak pakai jasa Exliding!',
+    rating: 5,
+    initials: 'BS',
+    accent: 'bg-primary',
+    order: 1,
+    isActive: true,
+  },
+  {
+    name: 'Sari Dewi',
+    role: 'Owner Klinik Kecantikan',
+    quote: 'Desainnya modern dan responsif di semua device. Tim support-nya juga sangat responsif dan membantu. Highly recommended!',
+    rating: 5,
+    initials: 'SD',
+    accent: 'bg-brutal-accent',
+    order: 2,
+    isActive: true,
+  },
+  {
+    name: 'Andi Prasetyo',
+    role: 'Direktur CV Maju Bersama',
+    quote: 'Dari konsultasi sampai website jadi, prosesnya cepat dan transparan. Website company profile kami sekarang jadi kebanggaan perusahaan.',
+    rating: 5,
+    initials: 'AP',
+    accent: 'bg-primary',
+    order: 3,
+    isActive: true,
+  },
+  {
+    name: 'Rina Wati',
+    role: 'Pemilik Restoran',
+    quote: 'Dulu pelanggan susah cari info menu dan lokasi kami. Sekarang dengan website baru, reservasi online meningkat drastis!',
+    rating: 5,
+    initials: 'RW',
+    accent: 'bg-brutal-accent',
+    order: 4,
+    isActive: true,
+  },
+  {
+    name: 'Hendra Wijaya',
+    role: 'CEO Startup Tech',
+    quote: 'Kualitas website setara agency besar tapi harganya sangat terjangkau. SEO-nya juga mantap, traffic organik naik signifikan.',
+    rating: 5,
+    initials: 'HW',
+    accent: 'bg-primary',
+    order: 5,
+    isActive: true,
+  },
+  {
+    name: 'Maya Sari',
+    role: 'Freelance Designer',
+    quote: 'Portfolio website yang dibuat benar-benar mencerminkan brand saya. Banyak klien baru datang setelah melihat website saya!',
+    rating: 5,
+    initials: 'MS',
+    accent: 'bg-brutal-accent',
+    order: 6,
+    isActive: true,
+  },
+]
+
+// ─── FAQS DATA ──────────────────────────────────────────────────────────────
+
+const FAQS_DATA = [
+  {
+    question: 'Berapa lama waktu pengerjaan website?',
+    answer: 'Untuk paket Starter, pengerjaan memakan waktu 3–5 hari kerja. Paket Pro membutuhkan 5–7 hari kerja, sedangkan Paket Bisnis sekitar 7–14 hari kerja tergantung kompleksitas fitur yang diminta. Kami selalu berkomunikasi progres secara transparan.',
+    category: 'general',
+    order: 1,
+    isActive: true,
+  },
+  {
+    question: 'Apakah saya bisa request desain custom?',
+    answer: 'Tentu saja! Semua paket kami menyediakan desain yang disesuaikan dengan identitas brand Anda. Kami akan berdiskusi tentang warna, layout, dan style yang Anda inginkan sebelum mulai mengerjakan.',
+    category: 'service',
+    order: 2,
+    isActive: true,
+  },
+  {
+    question: 'Apakah website sudah termasuk domain dan hosting?',
+    answer: 'Ya, semua paket sudah termasuk domain (.com atau .net) gratis selama 1 tahun dan hosting dengan spesifikasi sesuai paket yang dipilih. Anda tidak perlu repot mengurus infrastruktur teknis.',
+    category: 'service',
+    order: 3,
+    isActive: true,
+  },
+  {
+    question: 'Bagaimana dengan maintenance setelah website jadi?',
+    answer: 'Kami menyediakan support after-launch untuk semua paket. Jika ada update konten, perbaikan bug, atau pertanyaan teknis, tim kami siap membantu. Untuk maintenance rutin bulanan, tersedia paket terpisah dengan harga terjangkau.',
+    category: 'technical',
+    order: 4,
+    isActive: true,
+  },
+  {
+    question: 'Apakah website-nya SEO-friendly?',
+    answer: 'Absolutly! Semua website yang kami buat sudah dioptimasi untuk SEO on-page, termasuk meta tags, struktur heading, sitemap, loading speed optimization, dan mobile responsiveness. Kami juga menyediakan artikel SEO-ready sesuai paket.',
+    category: 'technical',
+    order: 5,
+    isActive: true,
+  },
+  {
+    question: 'Metode pembayaran apa saja yang tersedia?',
+    answer: 'Kami menerima pembayaran melalui transfer bank (BCA, BRI, Mandiri, BNI), e-wallet (GoPay, OVO, Dana), dan juga bisa dengan sistem cicilan. Pembayaran dilakukan 50% di awal dan 50% setelah website selesai.',
+    category: 'payment',
+    order: 6,
+    isActive: true,
+  },
+]
+
 // ─── HELPERS ────────────────────────────────────────────────────────────────
 
 async function upsertCollection(
@@ -508,12 +620,14 @@ export async function GET(req: NextRequest) {
   try {
     const payload = await getPayload({ config: configPromise })
 
-    const [services, products, portfolios, templates, blogPosts] = await Promise.all([
+    const [services, products, portfolios, templates, blogPosts, testimonials, faqs] = await Promise.all([
       payload.find({ collection: 'services', limit: 1 }),
       payload.find({ collection: 'products', limit: 1 }),
       payload.find({ collection: 'portfolios', limit: 1 }),
       payload.find({ collection: 'templates', limit: 1 }),
       payload.find({ collection: 'blog-posts', limit: 1 }),
+      payload.find({ collection: 'testimonials', limit: 1 }),
+      payload.find({ collection: 'faqs', limit: 1 }),
     ])
 
     return NextResponse.json({
@@ -524,6 +638,8 @@ export async function GET(req: NextRequest) {
         portfolios: portfolios.totalDocs,
         templates: templates.totalDocs,
         blogPosts: blogPosts.totalDocs,
+        testimonials: testimonials.totalDocs,
+        faqs: faqs.totalDocs,
       },
       hint: 'POST ke endpoint ini untuk seed semua data.',
     })
@@ -603,6 +719,14 @@ export async function POST(req: NextRequest) {
     // 5. Seed Blog Posts
     console.log('[seed-all] Seeding blog posts...')
     allResults.blogPosts = await upsertCollection(payload, 'blog-posts', 'slug', BLOG_POSTS_DATA)
+
+    // 6. Seed Testimonials
+    console.log('[seed-all] Seeding testimonials...')
+    allResults.testimonials = await upsertCollection(payload, 'testimonials', 'name', TESTIMONIALS_DATA)
+
+    // 7. Seed FAQs
+    console.log('[seed-all] Seeding FAQs...')
+    allResults.faqs = await upsertCollection(payload, 'faqs', 'question', FAQS_DATA)
 
     // Summary
     const totalSeeded = Object.values(allResults).reduce((acc, arr) => acc + arr.length, 0)

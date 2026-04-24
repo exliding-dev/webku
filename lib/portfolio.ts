@@ -3,6 +3,12 @@ import path from "path";
 
 const PORTFOLIO_DIR = path.join(/*turbopackIgnore: true*/ process.cwd(), "content/portfolio");
 
+export interface GalleryImage {
+  url: string;
+  alt: string;
+  caption?: string;
+}
+
 export interface PortfolioItem {
   id: number;
   title: string;
@@ -10,6 +16,7 @@ export interface PortfolioItem {
   category: string;
   categoryLabel: string;
   image: string;
+  gallery: GalleryImage[];
   link: string;
   description: string;
   tags: string[];
@@ -39,16 +46,10 @@ async function getPayloadPortfolioItems(): Promise<PortfolioItem[]> {
 
     if (!data.docs || !Array.isArray(data.docs)) return [];
 
-    return data.docs.map((doc: any, index: number) => ({
-      id: doc.id || index + 1000,
-      title: doc.title || "",
-      slug: doc.slug || "",
-      category: doc.category || "company",
-      categoryLabel: doc.categoryLabel || "",
-      image: (() => {
-        const rawUrl = typeof doc.image === "object" && doc.image !== null ? doc.image.url : doc.image || "";
+    return data.docs.map((doc: any, index: number) => {
+      // Helper to resolve image URLs
+      const resolveUrl = (rawUrl: string): string => {
         if (!rawUrl) return "";
-        // Strip any known domain prefix so images resolve as relative paths
         const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
         const knownPrefixes = [siteUrl, "https://www.exliding.my.id", "http://localhost:3000"];
         for (const prefix of knownPrefixes) {
@@ -57,16 +58,37 @@ async function getPayloadPortfolioItems(): Promise<PortfolioItem[]> {
           }
         }
         return rawUrl;
-      })(),
-      link: doc.link || "",
-      description: doc.description || "",
-      tags: Array.isArray(doc.tags)
-        ? doc.tags.map((t: any) => t.tag)
-        : [],
-      color: doc.color || "from-blue-600 to-indigo-700",
-      featured: Boolean(doc.featured),
-      order: doc.order || 0,
-    }));
+      };
+
+      const coverUrl = typeof doc.image === "object" && doc.image !== null ? doc.image.url : doc.image || "";
+
+      // Extract gallery images
+      const gallery: GalleryImage[] = Array.isArray(doc.gallery)
+        ? doc.gallery.map((g: any) => ({
+            url: resolveUrl(typeof g.image === "object" && g.image !== null ? g.image.url : g.image || ""),
+            alt: typeof g.image === "object" && g.image !== null ? g.image.alt || doc.title : doc.title,
+            caption: g.caption || undefined,
+          }))
+        : [];
+
+      return {
+        id: doc.id || index + 1000,
+        title: doc.title || "",
+        slug: doc.slug || "",
+        category: doc.category || "company",
+        categoryLabel: doc.categoryLabel || "",
+        image: resolveUrl(coverUrl),
+        gallery,
+        link: doc.link || "",
+        description: doc.description || "",
+        tags: Array.isArray(doc.tags)
+          ? doc.tags.map((t: any) => t.tag)
+          : [],
+        color: doc.color || "from-blue-600 to-indigo-700",
+        featured: Boolean(doc.featured),
+        order: doc.order || 0,
+      };
+    });
   } catch (error) {
     console.warn("Error fetching portfolios from Payload", error);
     return [];
@@ -84,7 +106,7 @@ function getStaticPortfolioItems(): PortfolioItem[] {
   const items = files.map((filename) => {
     const filePath = path.join(PORTFOLIO_DIR, filename);
     const raw = fs.readFileSync(filePath, "utf-8");
-    return JSON.parse(raw) as PortfolioItem;
+    return JSON.parse(raw) as Omit<PortfolioItem, 'gallery'> & { gallery?: GalleryImage[] };
   });
 
   return items.sort((a, b) => (a.order ?? 99) - (b.order ?? 99));

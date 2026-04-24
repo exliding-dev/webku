@@ -8,14 +8,20 @@ import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import { getLatestPostsAsync } from "@/lib/blog";
 import { getServices } from "@/lib/services";
+import { getAllTestimonialsAsync } from "@/lib/testimonials";
+import { getAllFAQsAsync } from "@/lib/faqs";
 
 // Render at request time so Payload CMS data is fetched at runtime,
 // not during build when the DB may be unreachable.
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const latestPosts = await getLatestPostsAsync(3);
-  const plans = await getServices();
+  const [latestPosts, plans, testimonials, faqs] = await Promise.all([
+    getLatestPostsAsync(3),
+    getServices(),
+    getAllTestimonialsAsync(),
+    getAllFAQsAsync(),
+  ]);
 
   return (
     <>
@@ -31,10 +37,10 @@ export default async function Home() {
       <Portfolio />
 
       {/* Testimonial Section */}
-      <Testimonial />
+      <Testimonial items={testimonials} />
 
       {/* FAQ Section */}
-      <FAQ />
+      <FAQ items={faqs} />
 
       {/* Blog Section */}
       <Blog posts={latestPosts} />

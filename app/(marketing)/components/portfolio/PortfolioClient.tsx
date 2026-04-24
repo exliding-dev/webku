@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Layers, Code2, ArrowRight, Star } from "lucide-react";
+import { ExternalLink, Layers, Code2, ArrowRight, Star, Camera } from "lucide-react";
 import type { PortfolioItem } from "@/lib/portfolio";
 
 // ─── Category Config ─────────────────────────────────────────────────────────
@@ -149,6 +149,14 @@ export default function PortfolioClient({ items }: { items: PortfolioItem[] }) {
                   <span className="absolute top-4 left-4 px-2 py-1 md:px-3 md:py-1 font-black text-[10px] md:text-xs uppercase tracking-wider bg-yellow-400 text-black brutal-border shadow-[2px_2px_0_#111]">
                     {item.categoryLabel}
                   </span>
+
+                  {/* Gallery count badge */}
+                  {item.gallery && item.gallery.length > 0 && (
+                    <span className="absolute top-4 right-4 inline-flex items-center gap-1 px-2 py-1 font-black text-[10px] md:text-xs bg-white text-black brutal-border shadow-[2px_2px_0_#111]">
+                      <Camera className="w-3 h-3" />
+                      {item.gallery.length + 1}
+                    </span>
+                  )}
 
                   {/* Hover overlay with action */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
