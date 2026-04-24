@@ -1,9 +1,14 @@
 import type { CollectionConfig } from 'payload'
 
+const isAdmin = ({ req: { user } }: any) => Boolean(user)
+
 export const Media: CollectionConfig = {
   slug: 'media',
   access: {
     read: () => true,
+    create: isAdmin,
+    update: isAdmin,
+    delete: isAdmin,
   },
   admin: {
     group: 'Admin & Akses',
