@@ -1,4 +1,4 @@
-const { Client } = require('pg');
+import { Client } from 'pg';
 const client = new Client({
   connectionString: 'postgresql://postgres.bznatjpmsapialqfjmoh:Exliding@11@aws-1-ap-southeast-2.pooler.supabase.com:5432/postgres'
 });
