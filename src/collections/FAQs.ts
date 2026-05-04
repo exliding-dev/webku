@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { revalidatePath } from 'next/cache'
+
 
 const isAdminOrPublicRead = ({ req: { user } }: any) => {
   if (user) return true
@@ -24,13 +24,13 @@ export const FAQs: CollectionConfig = {
   hooks: {
     afterChange: [
       ({ doc }) => {
-        revalidatePath('/', 'layout')
+        import('next/cache').then((mod) => mod.revalidatePath('/', 'layout'))
         return doc
       }
     ],
     afterDelete: [
       ({ doc }) => {
-        revalidatePath('/', 'layout')
+        import('next/cache').then((mod) => mod.revalidatePath('/', 'layout'))
         return doc
       }
     ],

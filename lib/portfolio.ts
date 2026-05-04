@@ -48,24 +48,40 @@ async function getPayloadPortfolioItems(): Promise<PortfolioItem[]> {
 
     return data.docs.map((doc: any, index: number) => {
       // Helper to resolve image URLs
-      const resolveUrl = (rawUrl: string): string => {
+      // On Vercel, Payload's /api/media/file/... endpoint cannot serve files
+      // because the ephemeral filesystem doesn't have the uploaded files.
+      // Instead, we point directly to the static files in public/media/.
+      const resolveUrl = (rawUrl: string, mediaObj?: any): string => {
         if (!rawUrl) return "";
+
+        // Strip any known site-URL prefix to get a relative path
         const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
         const knownPrefixes = [siteUrl, "https://www.exliding.my.id", "http://localhost:3000"];
+        let url = rawUrl;
         for (const prefix of knownPrefixes) {
-          if (rawUrl.startsWith(prefix)) {
-            return rawUrl.replace(prefix, "");
+          if (url.startsWith(prefix)) {
+            url = url.replace(prefix, "");
+            break;
           }
         }
-        return rawUrl;
+
+        // Convert Payload API media URLs to direct static paths
+        // /api/media/file/filename.ext  →  /media/filename.ext
+        if (url.startsWith("/api/media/file/")) {
+          const filename = mediaObj?.filename || url.replace("/api/media/file/", "");
+          return `/media/${filename}`;
+        }
+
+        return url;
       };
 
-      const coverUrl = typeof doc.image === "object" && doc.image !== null ? doc.image.url : doc.image || "";
+      const coverMedia = typeof doc.image === "object" && doc.image !== null ? doc.image : null;
+      const coverUrl = coverMedia ? coverMedia.url : doc.image || "";
 
       // Extract gallery images
       const gallery: GalleryImage[] = Array.isArray(doc.gallery)
         ? doc.gallery.map((g: any) => ({
-            url: resolveUrl(typeof g.image === "object" && g.image !== null ? g.image.url : g.image || ""),
+            url: resolveUrl(typeof g.image === "object" && g.image !== null ? g.image.url : g.image || "", typeof g.image === "object" ? g.image : undefined),
             alt: typeof g.image === "object" && g.image !== null ? g.image.alt || doc.title : doc.title,
             caption: g.caption || undefined,
           }))
@@ -77,7 +93,7 @@ async function getPayloadPortfolioItems(): Promise<PortfolioItem[]> {
         slug: doc.slug || "",
         category: doc.category || "company",
         categoryLabel: doc.categoryLabel || "",
-        image: resolveUrl(coverUrl),
+        image: resolveUrl(coverUrl, coverMedia),
         gallery,
         link: doc.link || "",
         description: doc.description || "",

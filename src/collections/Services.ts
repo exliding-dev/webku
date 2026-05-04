@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { revalidatePath } from 'next/cache'
+
 
 // Hanya admin yang bisa mengelola, publik bisa membaca
 const isAdminOrPublicRead = ({ req: { user } }: any) => {
@@ -25,13 +25,13 @@ export const Services: CollectionConfig = {
   hooks: {
     afterChange: [
       ({ doc }) => {
-        revalidatePath('/', 'layout')
+        import('next/cache').then((mod) => mod.revalidatePath('/', 'layout'))
         return doc
       }
     ],
     afterDelete: [
       ({ doc }) => {
-        revalidatePath('/', 'layout')
+        import('next/cache').then((mod) => mod.revalidatePath('/', 'layout'))
         return doc
       }
     ],
