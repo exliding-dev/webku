@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllPostsAsync } from "@/lib/blog";
 import { Calendar, Tag, ArrowRight, ArrowLeft, Newspaper } from "lucide-react";
@@ -15,11 +16,30 @@ function formatDate(dateStr: string) {
 
 const CARD_ACCENTS = ["bg-primary", "bg-brutal-accent", "bg-foreground"];
 
-export const metadata = {
-  title: "Blog & Artikel — Exliding",
+export const metadata: Metadata = {
+  title: "Blog & Artikel Seputar Web Development & Digital Marketing",
   description:
-    "Baca artikel terbaru seputar web development, SEO, dan digital marketing untuk bisnis Anda.",
+    "Baca artikel terbaru seputar web development, SEO, desain website, dan digital marketing. Tips & panduan untuk mengembangkan bisnis online Anda dari tim Exliding.",
+  keywords: [
+    "blog web development",
+    "artikel SEO Indonesia",
+    "tips bikin website",
+    "tutorial web design",
+    "panduan digital marketing",
+    "blog Exliding",
+    "tips UMKM online",
+  ],
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Blog & Artikel | Exliding",
+    description:
+      "Tips, insight, dan panduan seputar web development, SEO, dan digital marketing untuk membantu bisnis Anda bertumbuh.",
+    url: "/blog",
+  },
 };
+
 
 // Render at request time so CMS data is always fresh
 export const dynamic = "force-dynamic";

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -34,15 +35,44 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}) {
+}): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPostBySlugAsync(slug);
   if (!post) return { title: "Artikel Tidak Ditemukan" };
+
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.exliding.my.id";
+
   return {
-    title: `${post.title} — Exliding Blog`,
+    title: `${post.title}`,
     description: post.excerpt,
+    keywords: [
+      ...post.tags,
+      "blog Exliding",
+      "artikel web development",
+      "tips bisnis online",
+    ],
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt,
+      url: `${baseUrl}/blog/${slug}`,
+      siteName: "Exliding",
+      locale: "id_ID",
+      publishedTime: post.date,
+      authors: [post.author],
+      tags: post.tags,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+    },
   };
 }
+
 
 export default async function BlogPostPage({
   params,
