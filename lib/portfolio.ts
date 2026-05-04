@@ -54,15 +54,11 @@ async function getPayloadPortfolioItems(): Promise<PortfolioItem[]> {
       const resolveUrl = (rawUrl: string, mediaObj?: any): string => {
         if (!rawUrl) return "";
 
-        // Strip any known site-URL prefix to get a relative path
+        // Strip the site-URL prefix to get a relative path
         const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-        const knownPrefixes = [siteUrl, "https://www.exliding.my.id", "http://localhost:3000"];
         let url = rawUrl;
-        for (const prefix of knownPrefixes) {
-          if (url.startsWith(prefix)) {
-            url = url.replace(prefix, "");
-            break;
-          }
+        if (url.startsWith(siteUrl)) {
+          url = url.slice(siteUrl.length);
         }
 
         // Convert Payload API media URLs to direct static paths
@@ -122,7 +118,8 @@ function getStaticPortfolioItems(): PortfolioItem[] {
   const items = files.map((filename) => {
     const filePath = path.join(PORTFOLIO_DIR, filename);
     const raw = fs.readFileSync(filePath, "utf-8");
-    return JSON.parse(raw) as Omit<PortfolioItem, 'gallery'> & { gallery?: GalleryImage[] };
+    const parsed = JSON.parse(raw) as Omit<PortfolioItem, 'gallery'> & { gallery?: GalleryImage[] };
+    return { ...parsed, gallery: parsed.gallery ?? [] } as PortfolioItem;
   });
 
   return items.sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
